@@ -1,0 +1,23 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "UnrealAutoMod",
+	"Description": "",
+	"Category": "Other",
+	"CreatedBy": "Mythical",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "UnrealAutoMod",
+			"Type": "Editor",
+			"LoadingPhase": "Default"
+		}
+	]
+}

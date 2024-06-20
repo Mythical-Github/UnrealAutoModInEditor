@@ -1,0 +1,13 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "{CBB0D11A-492A-4CD8-177B-74B437AD12BA}",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "UAM_Uproject",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
