@@ -5,10 +5,21 @@ using System.Collections.Generic;
 
 public class UAM_UprojectEditorTarget : TargetRules
 {
-	public UAM_UprojectEditorTarget(TargetInfo Target) : base(Target)
+	public UAM_UprojectEditorTarget(TargetInfo Target)
 	{
 		Type = TargetType.Editor;
+	}
 
-		ExtraModuleNames.AddRange( new string[] { "UAM_Uproject" } );
+	//
+	// TargetRules interface.
+	//
+
+	public override void SetupBinaries(
+		TargetInfo Target,
+		ref List<UEBuildBinaryConfiguration> OutBuildBinaryConfigurations,
+		ref List<string> OutExtraModuleNames
+		)
+	{
+		OutExtraModuleNames.AddRange( new string[] { "UAM_Uproject" } );
 	}
 }

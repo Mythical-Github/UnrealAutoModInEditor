@@ -5,18 +5,19 @@
 	"FriendlyName": "UnrealAutoMod",
 	"Description": "",
 	"Category": "Other",
-	"CreatedBy": "Mythical",
+	"CreatedBy": "",
 	"CreatedByURL": "",
 	"DocsURL": "",
 	"MarketplaceURL": "",
 	"SupportURL": "",
-	"CanContainContent": false,
+	"EnabledByDefault": false,
+	"CanContainContent": true,
 	"IsBetaVersion": false,
 	"Installed": false,
 	"Modules": [
 		{
 			"Name": "UnrealAutoMod",
-			"Type": "Editor",
+			"Type": "Developer",
 			"LoadingPhase": "Default"
 		}
 	]

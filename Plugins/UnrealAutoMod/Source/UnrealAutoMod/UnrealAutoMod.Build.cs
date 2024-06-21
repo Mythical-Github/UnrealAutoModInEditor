@@ -1,12 +1,11 @@
-// Copyright 1998-2017 Epic Games, Inc. All Rights Reserved.
+// Copyright 1998-2016 Epic Games, Inc. All Rights Reserved.
 
 using UnrealBuildTool;
 
 public class UnrealAutoMod : ModuleRules
 {
-	public UnrealAutoMod(ReadOnlyTargetRules Target) : base(Target)
+	public UnrealAutoMod(TargetInfo Target)
 	{
-		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
 		
 		PublicIncludePaths.AddRange(
 			new string[] {
