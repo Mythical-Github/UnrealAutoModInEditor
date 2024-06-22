@@ -1,9 +1,33 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #include "UnrealAutoModPrivatePCH.h"
-#include "UnrealAutoMod.h"
 #include "UnrealAutoModBaseWidget.h"
+#include "Runtime/Core/Public/HAL/PlatformProcess.h" // Include for launching processes
+#include "Runtime/Core/Public/Misc/Paths.h" // Include for file path utilities
 
+void UUnrealAutoModBaseWidget::LaunchExternalExecutable(const FString& FilePath, const TArray<FString>& Parameters)
+{
+    // Construct the command string
+    FString Command = FString::Printf(TEXT("\"%s\""), *FilePath);
 
+    // Append each parameter to the command string
+    for (const FString& Param : Parameters)
+    {
+        Command += FString::Printf(TEXT(" %s"), *Param);
+    }
 
+    // Launch the process
+    FProcHandle ProcessHandle = FPlatformProcess::CreateProc(*FilePath, *Command, true, false, false, nullptr, 0, nullptr, nullptr);
 
+    if (!ProcessHandle.IsValid())
+    {
+        UE_LOG(LogTemp, Error, TEXT("Failed to launch executable: %s"), *FilePath);
+    }
+}
+
+FString UUnrealAutoModBaseWidget::GetProjectDirectory()
+{
+    // Get the directory of the .uproject file
+    FString ProjectFilePath = FPaths::ConvertRelativePathToFull(FPaths::GetProjectFilePath());
+    FString ProjectDir = FPaths::GetPath(ProjectFilePath); // Extract the directory part
+
+    return ProjectDir;
+}
