@@ -2,6 +2,7 @@
 #include "UnrealAutoModBaseWidget.h"
 #include "Runtime/Core/Public/HAL/PlatformProcess.h" // Include for launching processes
 #include "Runtime/Core/Public/Misc/Paths.h" // Include for file path utilities
+#include "UObject.h" // Include for UObject
 
 void UUnrealAutoModBaseWidget::LaunchExternalExecutable(const FString& FilePath, const TArray<FString>& Parameters)
 {
@@ -30,4 +31,10 @@ FString UUnrealAutoModBaseWidget::GetProjectDirectory()
     FString ProjectDir = FPaths::GetPath(ProjectFilePath); // Extract the directory part
 
     return ProjectDir;
+}
+
+UObject* UUnrealAutoModBaseWidget::LoadObjectByPath(const FString& ObjectPath)
+{
+    // Attempt to load the object from the given path
+    return StaticLoadObject(UObject::StaticClass(), nullptr, *ObjectPath, nullptr, RF_NoFlags, nullptr);
 }
