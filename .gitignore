@@ -73,3 +73,5 @@ Plugins/*/Intermediate/*
 # Cache files for the editor to use
 DerivedDataCache/*
 /Plugins/UnrealAutoMod/Resources/UnrealAutoMod
+/Plugins/UnrealAutoMod/Binaries
+/Plugins/UnrealAutoMod/Intermediate
