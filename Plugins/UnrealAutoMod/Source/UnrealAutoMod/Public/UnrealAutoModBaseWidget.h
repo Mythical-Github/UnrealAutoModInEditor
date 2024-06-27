@@ -2,8 +2,9 @@
 
 #include "UnrealAutoModPrivatePCH.h"
 #include "Blueprint/UserWidget.h"
-#include "UObject/UObject.h" // Include for UObject
-#include "UObject/Class.h"   // Include for UClass
+#include "UObject/UObject.h"
+#include "UObject/Class.h"
+#include "Engine/DataTable.h"
 
 #include "UnrealAutoModBaseWidget.generated.h"
 
@@ -21,13 +22,4 @@ public:
 
     UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
         FString GetProjectDirectory();
-
-    UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
-        UObject* LoadObjectByPath(const FString& ObjectPath);
-
-    UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
-        bool IsValidObject(UObject* Object);
-
-    UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
-        bool IsValidClass(UClass* Class);
 };

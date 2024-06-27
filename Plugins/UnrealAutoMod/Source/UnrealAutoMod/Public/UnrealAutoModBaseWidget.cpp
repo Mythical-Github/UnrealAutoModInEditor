@@ -1,7 +1,7 @@
 #include "UnrealAutoModPrivatePCH.h"
 #include "UnrealAutoModBaseWidget.h"
-#include "Runtime/Core/Public/HAL/PlatformProcess.h" // Include for launching processes
-#include "Runtime/Core/Public/Misc/Paths.h" // Include for file path utilities
+#include "Runtime/Core/Public/HAL/PlatformProcess.h"
+#include "Runtime/Core/Public/Misc/Paths.h"
 
 void UUnrealAutoModBaseWidget::LaunchExternalExecutable(const FString& FilePath, const TArray<FString>& Parameters)
 {
@@ -26,19 +26,4 @@ FString UUnrealAutoModBaseWidget::GetProjectDirectory()
     FString ProjectDir = FPaths::GetPath(ProjectFilePath);
 
     return ProjectDir;
-}
-
-UObject* UUnrealAutoModBaseWidget::LoadObjectByPath(const FString& ObjectPath)
-{
-    return StaticLoadObject(UObject::StaticClass(), nullptr, *ObjectPath, nullptr, RF_NoFlags, nullptr);
-}
-
-bool UUnrealAutoModBaseWidget::IsValidObject(UObject* Object)
-{
-    return IsValid(Object);
-}
-
-bool UUnrealAutoModBaseWidget::IsValidClass(UClass* Class)
-{
-    return (Class != nullptr && Class->IsValidLowLevel());
 }
