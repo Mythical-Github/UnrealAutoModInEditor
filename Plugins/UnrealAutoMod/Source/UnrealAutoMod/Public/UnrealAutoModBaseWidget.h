@@ -2,15 +2,8 @@
 
 #include "UnrealAutoModPrivatePCH.h"
 #include "Blueprint/UserWidget.h"
-#include "UObject/UObject.h"
-#include "UObject/Class.h"
-#include "Engine/DataTable.h"
-
 #include "UnrealAutoModBaseWidget.generated.h"
 
-/**
- *
- */
 UCLASS()
 class UNREALAUTOMOD_API UUnrealAutoModBaseWidget : public UUserWidget
 {
@@ -22,4 +15,16 @@ public:
 
     UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
         FString GetProjectDirectory();
+
+    UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
+        TArray<FString> GetFilesInDirectoryTree(const FString& Directory);
+
+    UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
+        TArray<FString> GetFileExtensionsFromPaths(const TArray<FString>& FilePaths);
+
+    UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
+        bool CreateDirectory(const FString& Directory);
+
+    UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
+        bool DeleteDirectoryAndContents(const FString& Directory);
 };

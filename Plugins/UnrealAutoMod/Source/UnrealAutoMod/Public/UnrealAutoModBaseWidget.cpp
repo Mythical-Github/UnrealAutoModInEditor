@@ -1,7 +1,9 @@
 #include "UnrealAutoModPrivatePCH.h"
 #include "UnrealAutoModBaseWidget.h"
-#include "Runtime/Core/Public/HAL/PlatformProcess.h"
-#include "Runtime/Core/Public/Misc/Paths.h"
+#include "HAL/PlatformProcess.h"
+#include "Misc/Paths.h"
+#include "HAL/FileManager.h"
+#include "Engine/Engine.h"
 
 void UUnrealAutoModBaseWidget::LaunchExternalExecutable(const FString& FilePath, const TArray<FString>& Parameters)
 {
@@ -26,4 +28,37 @@ FString UUnrealAutoModBaseWidget::GetProjectDirectory()
     FString ProjectDir = FPaths::GetPath(ProjectFilePath);
 
     return ProjectDir;
+}
+
+TArray<FString> UUnrealAutoModBaseWidget::GetFilesInDirectoryTree(const FString& Directory)
+{
+    TArray<FString> FileList;
+    IFileManager& FileManager = IFileManager::Get();
+    FileManager.FindFilesRecursive(FileList, *Directory, TEXT("*.*"), true, false, false);
+    return FileList;
+}
+
+TArray<FString> UUnrealAutoModBaseWidget::GetFileExtensionsFromPaths(const TArray<FString>& FilePaths)
+{
+    TArray<FString> Extensions;
+
+    for (const FString& FilePath : FilePaths)
+    {
+        FString Extension = FPaths::GetExtension(FilePath);
+        Extensions.Add(Extension);
+    }
+
+    return Extensions;
+}
+
+bool UUnrealAutoModBaseWidget::CreateDirectory(const FString& Directory)
+{
+    return IFileManager::Get().MakeDirectory(*Directory, true);
+}
+
+bool UUnrealAutoModBaseWidget::DeleteDirectoryAndContents(const FString& Directory)
+{
+    IFileManager& FileManager = IFileManager::Get();
+    FileManager.DeleteDirectory(*Directory, false, true);
+    return !FileManager.DirectoryExists(*Directory);
 }
