@@ -145,3 +145,14 @@ bool UUnrealAutoModUtilities::JsonToDataTable(const FString& JsonString, UDataTa
 
     return true;
 }
+bool UUnrealAutoModUtilities::CreateTextFile(const FString& FileName, const FString& FileContents)
+{
+    IPlatformFile& PlatformFile = FPlatformFileManager::Get().GetPlatformFile();
+
+    if (PlatformFile.FileExists(*FileName))
+    {
+        PlatformFile.DeleteFile(*FileName);
+    }
+
+    return FFileHelper::SaveStringToFile(FileContents, *FileName);
+}

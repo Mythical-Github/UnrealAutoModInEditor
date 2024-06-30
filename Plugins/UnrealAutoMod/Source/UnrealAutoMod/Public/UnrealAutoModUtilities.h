@@ -47,4 +47,7 @@ public:
 
     UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
         bool JsonToDataTable(const FString& JsonString, UDataTable* DataTable);
+
+    UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
+        bool CreateTextFile(const FString& FileName, const FString& FileContents);
 };
