@@ -50,4 +50,7 @@ public:
 
     UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
         bool CreateTextFile(const FString& FileName, const FString& FileContents);
+
+    UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
+        FString ReadFile(const FString& FileName);
 };

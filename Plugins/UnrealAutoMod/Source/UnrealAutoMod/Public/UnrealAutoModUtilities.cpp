@@ -156,3 +156,18 @@ bool UUnrealAutoModUtilities::CreateTextFile(const FString& FileName, const FStr
 
     return FFileHelper::SaveStringToFile(FileContents, *FileName);
 }
+
+
+FString UUnrealAutoModUtilities::ReadFile(const FString& FileName)
+{
+    FString FileContents;
+    if (FFileHelper::LoadFileToString(FileContents, *FileName))
+    {
+        return FileContents;
+    }
+    else
+    {
+        UE_LOG(LogTemp, Warning, TEXT("Failed to read file: %s"), *FileName);
+        return "";
+    }
+}
