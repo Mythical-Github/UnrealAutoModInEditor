@@ -1,6 +1,9 @@
 #pragma once
 
 #include "UnrealAutoModPrivatePCH.h"
+#include "Json.h"
+#include "Runtime/JsonUtilities/Public/JsonUtilities.h"
+#include "Engine/DataTable.h"
 #include "UnrealAutoModUtilities.generated.h"
 
 UCLASS()
@@ -38,4 +41,10 @@ public:
 
     UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
         bool DeleteFile(const FString& File);
+
+    UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
+        FString DataTableToJson(UDataTable* DataTable);
+
+    UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
+        bool JsonToDataTable(const FString& JsonString, UDataTable* DataTable);
 };
