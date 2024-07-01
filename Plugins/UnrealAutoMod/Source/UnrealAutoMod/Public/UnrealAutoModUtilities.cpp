@@ -152,6 +152,7 @@ bool UUnrealAutoModUtilities::JsonToDataTable(const FString& JsonString, UDataTa
 
     return true;
 }
+
 bool UUnrealAutoModUtilities::CreateTextFile(const FString& FileName, const FString& FileContents)
 {
     IPlatformFile& PlatformFile = FPlatformFileManager::Get().GetPlatformFile();
@@ -240,7 +241,6 @@ TArray<UObject*> UUnrealAutoModUtilities::GetAllInstancedObjectsOfClass(UClass* 
         return Instances;
     }
 
-    // Iterate over all objects of the specified class
     for (TObjectIterator<UObject> It; It; ++It)
     {
         UObject* Object = *It;
@@ -251,4 +251,24 @@ TArray<UObject*> UUnrealAutoModUtilities::GetAllInstancedObjectsOfClass(UClass* 
     }
 
     return Instances;
+}
+
+TArray<FString> UUnrealAutoModUtilities::GetEnumValuesAsString(UEnum* Enum)
+{
+    TArray<FString> EnumValues;
+
+    if (!Enum)
+    {
+        return EnumValues;
+    }
+
+    for (int32 i = 0; i < Enum->NumEnums(); ++i)
+    {
+        if (!Enum->HasMetaData(TEXT("Hidden"), i))
+        {
+            EnumValues.Add(Enum->GetDisplayNameText(i).ToString());
+        }
+    }
+
+    return EnumValues;
 }

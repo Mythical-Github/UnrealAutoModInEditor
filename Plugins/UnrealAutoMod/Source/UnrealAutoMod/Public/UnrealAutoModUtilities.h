@@ -62,4 +62,7 @@ public:
 
     UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
         static TArray<UObject*> GetAllInstancedObjectsOfClass(UClass* Class);
+
+    UFUNCTION(BlueprintCallable, Category = "Enum")
+        static TArray<FString> GetEnumValuesAsString(UEnum* Enum);
 };
