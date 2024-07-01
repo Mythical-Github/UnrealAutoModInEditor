@@ -3,6 +3,7 @@
 #pragma once
 
 #include "ModuleManager.h"
+#include "Blueprint/UserWidget.h"
 
 class FToolBarBuilder;
 class FMenuBuilder;

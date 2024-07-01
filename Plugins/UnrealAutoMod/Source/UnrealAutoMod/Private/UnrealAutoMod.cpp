@@ -76,12 +76,10 @@ void FUnrealAutoModModule::ShutdownModule()
 
 TSharedRef<SDockTab> FUnrealAutoModModule::OnSpawnPluginTab(const FSpawnTabArgs& SpawnTabArgs)
 {
-    // Load the UserWidget class from the Blueprint
     UClass* UserWidgetClass = LoadObject<UClass>(nullptr, TEXT("/UnrealAutoMod/Widgets/WBP_UnrealAutoMod.WBP_UnrealAutoMod_C"));
 
     if (!UserWidgetClass)
     {
-        // Handle the error: UserWidget class not found
         FText ErrorText = FText::Format(
             LOCTEXT("ErrorLoadingWidget", "Failed to load UserWidget class from {0}"),
             FText::FromString(TEXT("/UnrealAutoMod/Widgets/WBP_UnrealAutoMod.WBP_UnrealAutoMod_C"))
@@ -100,12 +98,24 @@ TSharedRef<SDockTab> FUnrealAutoModModule::OnSpawnPluginTab(const FSpawnTabArgs&
             ];
     }
 
-    // Create an instance of the UserWidget
-    UUserWidget* UserWidget = CreateWidget<UUserWidget>(GEditor->GetEditorWorldContext().World(), UserWidgetClass);
+    UUserWidget* ExistingUserWidget = nullptr;
+    for (TObjectIterator<UUserWidget> Itr; Itr; ++Itr)
+    {
+        if (Itr->IsA(UserWidgetClass))
+        {
+            ExistingUserWidget = *Itr;
+            break;
+        }
+    }
+
+    UUserWidget* UserWidget = ExistingUserWidget;
+    if (!UserWidget)
+    {
+        UserWidget = CreateWidget<UUserWidget>(GEditor->GetEditorWorldContext().World(), UserWidgetClass);
+    }
 
     if (!UserWidget)
     {
-        // Handle the error: UserWidget instance could not be created
         FText ErrorText = FText::Format(
             LOCTEXT("ErrorCreatingWidget", "Failed to create UserWidget instance from {0}"),
             FText::FromString(TEXT("/UnrealAutoMod/Widgets/WBP_UnrealAutoMod.WBP_UnrealAutoMod_C"))
@@ -124,7 +134,6 @@ TSharedRef<SDockTab> FUnrealAutoModModule::OnSpawnPluginTab(const FSpawnTabArgs&
             ];
     }
 
-    // Add the UserWidget to the tab
     return SNew(SDockTab)
         .TabRole(ETabRole::NomadTab)
         [
