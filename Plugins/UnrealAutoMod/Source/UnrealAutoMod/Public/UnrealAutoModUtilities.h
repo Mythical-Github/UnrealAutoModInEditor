@@ -53,4 +53,13 @@ public:
 
     UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
         FString ReadFile(const FString& FileName);
+
+    UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
+        TArray<FString> GetFunctionNames(UObject* Object);
+
+    UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
+        void CallFunctionByName(UObject* Object, const FString& FunctionName);
+
+    UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
+        static TArray<UObject*> GetAllInstancedObjectsOfClass(UClass* Class);
 };
