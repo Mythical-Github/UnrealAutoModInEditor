@@ -305,3 +305,15 @@ struct FUnrealAutoModTheme : public FTableRowBase
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "UnrealAutoMod")
     FLinearColor BackgroundBottomColor;
 };
+
+USTRUCT(BlueprintType)
+struct FMenuTemplate : public FTableRowBase
+{
+    GENERATED_BODY()
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "UnrealAutoMod")
+    FText TitleText;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "UnrealAutoMod")
+    TSubclassOf<UUnrealAutoModBaseWidget> WidgetClass;
+};
