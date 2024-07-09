@@ -88,3 +88,11 @@ enum class EUnrealModTreeType : uint8
     CUSTOM_CONTENT          UMETA(DisplayName = "Custom Content"), // "Content/CustomContent/ModName"
     MODS                    UMETA(DisplayName = "Mods")            // "Content/Mods/ModName"
 };
+
+UENUM(BlueprintType)
+enum class EUtilityType : uint8
+{
+    RUN_EXE                 UMETA(DisplayName = "Run Exe"),
+    OPEN_WEBSITE            UMETA(DisplayName = "Open Website"),
+    OPEN_DIRECTORY          UMETA(DisplayName = "Open Directory")
+};
