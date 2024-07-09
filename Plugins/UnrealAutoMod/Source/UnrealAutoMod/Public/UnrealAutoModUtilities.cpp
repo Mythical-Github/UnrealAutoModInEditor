@@ -272,3 +272,20 @@ TArray<FString> UUnrealAutoModUtilities::GetEnumValuesAsString(UEnum* Enum)
 
     return EnumValues;
 }
+
+void UUnrealAutoModUtilities::OpenDirectory(FString DirectoryPath)
+{
+    if (FPaths::DirectoryExists(DirectoryPath))
+    {
+        FPlatformProcess::ExploreFolder(*DirectoryPath);
+    }
+    else
+    {
+        UE_LOG(LogTemp, Warning, TEXT("Directory does not exist: %s"), *DirectoryPath);
+    }
+}
+
+void UUnrealAutoModUtilities::OpenWebsite(FString URL)
+{
+    FPlatformProcess::LaunchURL(*URL, nullptr, nullptr);
+}

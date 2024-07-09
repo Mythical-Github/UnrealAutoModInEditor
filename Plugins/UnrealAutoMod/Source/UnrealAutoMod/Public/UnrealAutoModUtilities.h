@@ -65,4 +65,10 @@ public:
 
     UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
         static TArray<FString> GetEnumValuesAsString(UEnum* Enum);
+
+    UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
+        static void OpenDirectory(FString DirectoryPath);
+
+    UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
+        static void OpenWebsite(FString URL);
 };
