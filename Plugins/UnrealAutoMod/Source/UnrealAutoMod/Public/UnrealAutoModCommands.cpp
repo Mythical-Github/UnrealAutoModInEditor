@@ -1,7 +1,7 @@
 // Copyright 1998-2016 Epic Games, Inc. All Rights Reserved.
 
-#include "UnrealAutoModPrivatePCH.h"
 #include "UnrealAutoModCommands.h"
+#include "UnrealAutoModPrivatePCH.h"
 
 #define LOCTEXT_NAMESPACE "FUnrealAutoModModule"
 

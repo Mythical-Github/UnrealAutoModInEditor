@@ -1,9 +1,9 @@
 // Copyright 1998-2016 Epic Games, Inc. All Rights Reserved.
 
-#include "UnrealAutoModPrivatePCH.h"
 #include "UnrealAutoModStyle.h"
-#include "SlateGameResources.h"
-#include "IPluginManager.h"
+#include "UnrealAutoModPrivatePCH.h"
+#include "Slate/SlateGameResources.h"
+#include "Interfaces/IPluginManager.h"
 
 TSharedPtr< FSlateStyleSet > FUnrealAutoModStyle::StyleInstance = NULL;
 

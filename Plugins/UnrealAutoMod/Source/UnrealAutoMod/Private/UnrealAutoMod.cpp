@@ -1,12 +1,12 @@
 // Copyright 1998-2016 Epic Games, Inc. All Rights Reserved.
 
+#include "UnrealAutoMod.h" // Your module's header file
 #include "UnrealAutoModPrivatePCH.h"
 #include "SlateBasics.h"
 #include "SlateExtras.h"
 #include "UnrealAutoModStyle.h"
 #include "UnrealAutoModCommands.h"
 #include "LevelEditor.h"
-#include "UnrealAutoMod.h" // Your module's header file
 #include "Widgets/Docking/SDockTab.h"
 #include "Widgets/Layout/SBox.h"
 #include "Widgets/Text/STextBlock.h"
