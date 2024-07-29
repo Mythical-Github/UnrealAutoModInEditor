@@ -71,4 +71,10 @@ public:
 
     UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
         static void OpenWebsite(FString URL);
+
+    UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod|JSON")
+        static bool GetJsonFieldAsString(const FString& JsonString, const FString& FieldName, FString& FieldValue);
+
+    UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod|JSON")
+        static bool SetJsonFieldAsString(const FString& JsonString, const FString& FieldName, const FString& FieldValue, FString& OutJsonString);
 };

@@ -289,3 +289,36 @@ void UUnrealAutoModUtilities::OpenWebsite(FString URL)
 {
     FPlatformProcess::LaunchURL(*URL, nullptr, nullptr);
 }
+
+bool UUnrealAutoModUtilities::GetJsonFieldAsString(const FString& JsonString, const FString& FieldName, FString& FieldValue)
+{
+    TSharedPtr<FJsonObject> JsonObject;
+    TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(JsonString);
+
+    if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
+    {
+        if (JsonObject->HasField(FieldName))
+        {
+            FieldValue = JsonObject->GetStringField(FieldName);
+            return true;
+        }
+    }
+    return false;
+}
+
+bool UUnrealAutoModUtilities::SetJsonFieldAsString(const FString& JsonString, const FString& FieldName, const FString& FieldValue, FString& OutJsonString)
+{
+    TSharedPtr<FJsonObject> JsonObject;
+    TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(JsonString);
+
+    if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
+    {
+        JsonObject->SetStringField(FieldName, FieldValue);
+        TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&OutJsonString);
+        if (FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer))
+        {
+            return true;
+        }
+    }
+    return false;
+}
