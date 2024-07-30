@@ -317,3 +317,16 @@ struct FMenuTemplate : public FTableRowBase
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "UnrealAutoMod")
     TSubclassOf<UUnrealAutoModBaseWidget> WidgetClass;
 };
+
+USTRUCT(BlueprintType)
+struct FJsonConversionInfo : public FTableRowBase
+{
+    GENERATED_BODY()
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "UnrealAutoMod")
+    FString FieldName;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "UnrealAutoMod")
+    FString FieldValue;
+
+};
