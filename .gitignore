@@ -75,3 +75,7 @@ DerivedDataCache/*
 /Plugins/UnrealAutoMod/Resources/UnrealAutoMod
 /Plugins/UnrealAutoMod/Binaries
 /Plugins/UnrealAutoMod/Intermediate
+
+# Except the placeholder.txt file
+!Saved/Logs/
+!Saved/Logs/placeholder.txt
