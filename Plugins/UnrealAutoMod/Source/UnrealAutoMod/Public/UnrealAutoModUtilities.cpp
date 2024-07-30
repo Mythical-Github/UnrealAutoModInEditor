@@ -168,6 +168,7 @@ bool UUnrealAutoModUtilities::CreateTextFile(const FString& FileName, const FStr
 FString UUnrealAutoModUtilities::ReadFile(const FString& FileName)
 {
     FString FileContents;
+    // Read the file contents into the FString
     if (FFileHelper::LoadFileToString(FileContents, *FileName))
     {
         return FileContents;
@@ -175,7 +176,7 @@ FString UUnrealAutoModUtilities::ReadFile(const FString& FileName)
     else
     {
         UE_LOG(LogTemp, Warning, TEXT("Failed to read file: %s"), *FileName);
-        return "";
+        return FString();
     }
 }
 
@@ -290,22 +291,6 @@ void UUnrealAutoModUtilities::OpenWebsite(FString URL)
     FPlatformProcess::LaunchURL(*URL, nullptr, nullptr);
 }
 
-bool UUnrealAutoModUtilities::GetJsonFieldAsString(const FString& JsonString, const FString& FieldName, FString& FieldValue)
-{
-    TSharedPtr<FJsonObject> JsonObject;
-    TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(JsonString);
-
-    if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
-    {
-        if (JsonObject->HasField(FieldName))
-        {
-            FieldValue = JsonObject->GetStringField(FieldName);
-            return true;
-        }
-    }
-    return false;
-}
-
 bool UUnrealAutoModUtilities::SetJsonFieldAsString(const FString& JsonString, const FString& FieldName, const FString& FieldValue, FString& OutJsonString)
 {
     TSharedPtr<FJsonObject> JsonObject;
@@ -313,12 +298,128 @@ bool UUnrealAutoModUtilities::SetJsonFieldAsString(const FString& JsonString, co
 
     if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
     {
-        JsonObject->SetStringField(FieldName, FieldValue);
+        // Determine if the FieldValue is a JSON string or a plain string
+        TSharedPtr<FJsonObject> FieldValueObject;
+        TSharedRef<TJsonReader<>> FieldValueReader = TJsonReaderFactory<>::Create(FieldValue);
+
+        if (FJsonSerializer::Deserialize(FieldValueReader, FieldValueObject) && FieldValueObject.IsValid())
+        {
+            // FieldValue is a JSON object
+            JsonObject->SetObjectField(FieldName, FieldValueObject);
+        }
+        else
+        {
+            // FieldValue is a plain string
+            JsonObject->SetStringField(FieldName, FieldValue);
+        }
+
         TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&OutJsonString);
         if (FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer))
         {
             return true;
         }
+        else
+        {
+            UE_LOG(LogTemp, Error, TEXT("Failed to serialize updated JSON object."));
+        }
     }
+    else
+    {
+        UE_LOG(LogTemp, Error, TEXT("Failed to deserialize JSON string."));
+    }
+
     return false;
+}
+
+bool UUnrealAutoModUtilities::GetJsonFieldAsString(const FString& JsonString, const FString& FieldName, FString& FieldValue)
+{
+    TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(JsonString);
+    TSharedPtr<FJsonObject> JsonObject;
+
+    // Deserialize the JSON string into a JsonObject
+    if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
+    {
+        if (JsonObject->HasField(FieldName))
+        {
+            TSharedPtr<FJsonValue> JsonValue = JsonObject->TryGetField(FieldName);
+            if (JsonValue.IsValid())
+            {
+                switch (JsonValue->Type)
+                {
+                case EJson::String:
+                    FieldValue = JsonValue->AsString();
+                    return true;
+
+                case EJson::Number:
+                    FieldValue = FString::Printf(TEXT("%f"), JsonValue->AsNumber());
+                    return true;
+
+                case EJson::Boolean:
+                    FieldValue = JsonValue->AsBool() ? TEXT("true") : TEXT("false");
+                    return true;
+
+                case EJson::Object:
+                {
+                    TSharedPtr<FJsonObject> NestedObject = JsonValue->AsObject();
+                    if (NestedObject.IsValid())
+                    {
+                        // Convert the nested object to a string representation
+                        FString NestedObjectString;
+                        TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&NestedObjectString);
+                        if (FJsonSerializer::Serialize(NestedObject.ToSharedRef(), Writer))
+                        {
+                            FieldValue = NestedObjectString;
+                            return true;
+                        }
+                    }
+                    break;
+                }
+
+                case EJson::Array:
+                    UE_LOG(LogTemp, Error, TEXT("Json Value of type 'Array' cannot be used as 'String'."));
+                    return false;
+
+                case EJson::Null:
+                    UE_LOG(LogTemp, Error, TEXT("Json Value is 'Null'."));
+                    return false;
+
+                default:
+                    UE_LOG(LogTemp, Error, TEXT("Unknown Json Value type."));
+                    return false;
+                }
+            }
+            else
+            {
+                UE_LOG(LogTemp, Warning, TEXT("Field '%s' does not exist or is not valid."), *FieldName);
+                return false;
+            }
+        }
+        else
+        {
+            UE_LOG(LogTemp, Warning, TEXT("Field '%s' does not exist."), *FieldName);
+            return false;
+        }
+    }
+    else
+    {
+        UE_LOG(LogTemp, Error, TEXT("Failed to deserialize JSON."));
+        return false;
+    }
+
+    // Ensure the function always returns a value
+    return false;
+}
+
+bool UUnrealAutoModUtilities::WriteStringToFile(const FString& FileName, const FString& FileContents)
+{
+    // Use FFileHelper::SaveStringToFile to write the string to the file
+    if (FFileHelper::SaveStringToFile(FileContents, *FileName))
+    {
+        return true; // Successfully written
+    }
+    else
+    {
+        UE_LOG(LogTemp, Error, TEXT("Failed to write file: %s"), *FileName);
+        return false; // Failed to write
+    }
 }
