@@ -291,13 +291,43 @@ void UUnrealAutoModUtilities::OpenWebsite(FString URL)
     FPlatformProcess::LaunchURL(*URL, nullptr, nullptr);
 }
 
-bool UUnrealAutoModUtilities::SetJsonFieldAsString(const FString& JsonString, const FString& FieldName, const FString& FieldValue, FString& OutJsonString)
+bool UUnrealAutoModUtilities::WriteStringToFile(const FString& FileName, const FString& FileContents)
+{
+    // Use FFileHelper::SaveStringToFile to write the string to the file
+    if (FFileHelper::SaveStringToFile(FileContents, *FileName))
+    {
+        return true; // Successfully written
+    }
+    else
+    {
+        UE_LOG(LogTemp, Error, TEXT("Failed to write file: %s"), *FileName);
+        return false; // Failed to write
+    }
+}
+
+bool UUnrealAutoModUtilities::SetJsonFieldAsString(const FString& JsonString, const TArray<FString>& FieldNames, const FString& FieldValue, FString& OutJsonString)
 {
     TSharedPtr<FJsonObject> JsonObject;
     TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(JsonString);
 
     if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
     {
+        TSharedPtr<FJsonObject> CurrentObject = JsonObject;
+
+        for (int32 i = 0; i < FieldNames.Num() - 1; ++i)
+        {
+            if (CurrentObject->HasField(FieldNames[i]) && CurrentObject->GetField<EJson::Object>(FieldNames[i]).IsValid())
+            {
+                CurrentObject = CurrentObject->GetObjectField(FieldNames[i]);
+            }
+            else
+            {
+                TSharedPtr<FJsonObject> NewObject = MakeShareable(new FJsonObject());
+                CurrentObject->SetObjectField(FieldNames[i], NewObject);
+                CurrentObject = NewObject;
+            }
+        }
+
         // Determine if the FieldValue is a JSON string or a plain string
         TSharedPtr<FJsonObject> FieldValueObject;
         TSharedRef<TJsonReader<>> FieldValueReader = TJsonReaderFactory<>::Create(FieldValue);
@@ -305,12 +335,12 @@ bool UUnrealAutoModUtilities::SetJsonFieldAsString(const FString& JsonString, co
         if (FJsonSerializer::Deserialize(FieldValueReader, FieldValueObject) && FieldValueObject.IsValid())
         {
             // FieldValue is a JSON object
-            JsonObject->SetObjectField(FieldName, FieldValueObject);
+            CurrentObject->SetObjectField(FieldNames.Last(), FieldValueObject);
         }
         else
         {
             // FieldValue is a plain string
-            JsonObject->SetStringField(FieldName, FieldValue);
+            CurrentObject->SetStringField(FieldNames.Last(), FieldValue);
         }
 
         TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&OutJsonString);
@@ -331,17 +361,31 @@ bool UUnrealAutoModUtilities::SetJsonFieldAsString(const FString& JsonString, co
     return false;
 }
 
-bool UUnrealAutoModUtilities::GetJsonFieldAsString(const FString& JsonString, const FString& FieldName, FString& FieldValue)
+bool UUnrealAutoModUtilities::GetJsonFieldAsString(const FString& JsonString, const TArray<FString>& FieldNames, FString& FieldValue)
 {
     TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(JsonString);
     TSharedPtr<FJsonObject> JsonObject;
 
-    // Deserialize the JSON string into a JsonObject
     if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
     {
-        if (JsonObject->HasField(FieldName))
+        TSharedPtr<FJsonObject> CurrentObject = JsonObject;
+
+        for (int32 i = 0; i < FieldNames.Num() - 1; ++i)
         {
-            TSharedPtr<FJsonValue> JsonValue = JsonObject->TryGetField(FieldName);
+            if (CurrentObject->HasField(FieldNames[i]) && CurrentObject->GetField<EJson::Object>(FieldNames[i]).IsValid())
+            {
+                CurrentObject = CurrentObject->GetObjectField(FieldNames[i]);
+            }
+            else
+            {
+                UE_LOG(LogTemp, Warning, TEXT("Field '%s' does not exist or is not a JSON object."), *FieldNames[i]);
+                return false;
+            }
+        }
+
+        if (CurrentObject->HasField(FieldNames.Last()))
+        {
+            TSharedPtr<FJsonValue> JsonValue = CurrentObject->TryGetField(FieldNames.Last());
             if (JsonValue.IsValid())
             {
                 switch (JsonValue->Type)
@@ -390,13 +434,13 @@ bool UUnrealAutoModUtilities::GetJsonFieldAsString(const FString& JsonString, co
             }
             else
             {
-                UE_LOG(LogTemp, Warning, TEXT("Field '%s' does not exist or is not valid."), *FieldName);
+                UE_LOG(LogTemp, Warning, TEXT("Field '%s' does not exist or is not valid."), *FieldNames.Last());
                 return false;
             }
         }
         else
         {
-            UE_LOG(LogTemp, Warning, TEXT("Field '%s' does not exist."), *FieldName);
+            UE_LOG(LogTemp, Warning, TEXT("Field '%s' does not exist."), *FieldNames.Last());
             return false;
         }
     }
@@ -406,20 +450,267 @@ bool UUnrealAutoModUtilities::GetJsonFieldAsString(const FString& JsonString, co
         return false;
     }
 
-    // Ensure the function always returns a value
     return false;
 }
 
-bool UUnrealAutoModUtilities::WriteStringToFile(const FString& FileName, const FString& FileContents)
+bool UUnrealAutoModUtilities::RemoveJsonField(const FString& JsonString, const TArray<FString>& FieldNames, FString& OutJsonString)
 {
-    // Use FFileHelper::SaveStringToFile to write the string to the file
-    if (FFileHelper::SaveStringToFile(FileContents, *FileName))
+    TSharedPtr<FJsonObject> JsonObject;
+    TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(JsonString);
+
+    if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
     {
-        return true; // Successfully written
+        TSharedPtr<FJsonObject> CurrentObject = JsonObject;
+
+        for (int32 i = 0; i < FieldNames.Num() - 1; ++i)
+        {
+            if (CurrentObject->HasField(FieldNames[i]) && CurrentObject->GetField<EJson::Object>(FieldNames[i]).IsValid())
+            {
+                CurrentObject = CurrentObject->GetObjectField(FieldNames[i]);
+            }
+            else
+            {
+                UE_LOG(LogTemp, Warning, TEXT("Field '%s' does not exist or is not a JSON object."), *FieldNames[i]);
+                return false;
+            }
+        }
+
+        if (CurrentObject->HasField(FieldNames.Last()))
+        {
+            CurrentObject->RemoveField(FieldNames.Last());
+
+            TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&OutJsonString);
+            if (FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer))
+            {
+                return true;
+            }
+            else
+            {
+                UE_LOG(LogTemp, Error, TEXT("Failed to serialize updated JSON object."));
+                return false;
+            }
+        }
+        else
+        {
+            UE_LOG(LogTemp, Warning, TEXT("Field '%s' does not exist."), *FieldNames.Last());
+            return false;
+        }
     }
     else
     {
-        UE_LOG(LogTemp, Error, TEXT("Failed to write file: %s"), *FileName);
-        return false; // Failed to write
+        UE_LOG(LogTemp, Error, TEXT("Failed to deserialize JSON string."));
+        return false;
+    }
+}
+
+bool UUnrealAutoModUtilities::ReadJsonField(const FString& JsonString, const TArray<FString>& FieldNames, FString& FieldValue)
+{
+    return GetJsonFieldAsString(JsonString, FieldNames, FieldValue);
+}
+
+bool UUnrealAutoModUtilities::AddJsonListEntry(const FString& JsonString, const TArray<FString>& FieldNames, const FString& EntryValue, FString& OutJsonString)
+{
+    TSharedPtr<FJsonObject> JsonObject;
+    TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(JsonString);
+
+    if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
+    {
+        TSharedPtr<FJsonObject> CurrentObject = JsonObject;
+
+        for (int32 i = 0; i < FieldNames.Num() - 1; ++i)
+        {
+            if (CurrentObject->HasField(FieldNames[i]) && CurrentObject->GetField<EJson::Object>(FieldNames[i]).IsValid())
+            {
+                CurrentObject = CurrentObject->GetObjectField(FieldNames[i]);
+            }
+            else
+            {
+                TSharedPtr<FJsonObject> NewObject = MakeShareable(new FJsonObject());
+                CurrentObject->SetObjectField(FieldNames[i], NewObject);
+                CurrentObject = NewObject;
+            }
+        }
+
+        if (CurrentObject->HasField(FieldNames.Last()) && CurrentObject->GetField<EJson::Array>(FieldNames.Last()).IsValid())
+        {
+            TArray<TSharedPtr<FJsonValue>> Array = CurrentObject->GetArrayField(FieldNames.Last());
+
+            TSharedPtr<FJsonValue> NewValue = MakeShareable(new FJsonValueString(EntryValue));
+            Array.Add(NewValue);
+
+            CurrentObject->SetArrayField(FieldNames.Last(), Array);
+
+            TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&OutJsonString);
+            if (FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer))
+            {
+                return true;
+            }
+            else
+            {
+                UE_LOG(LogTemp, Error, TEXT("Failed to serialize updated JSON object."));
+                return false;
+            }
+        }
+        else
+        {
+            UE_LOG(LogTemp, Warning, TEXT("Field '%s' is not an array or does not exist."), *FieldNames.Last());
+            return false;
+        }
+    }
+    else
+    {
+        UE_LOG(LogTemp, Error, TEXT("Failed to deserialize JSON string."));
+        return false;
+    }
+}
+
+bool UUnrealAutoModUtilities::RemoveJsonListEntry(const FString& JsonString, const TArray<FString>& FieldNames, int32 Index, FString& OutJsonString)
+{
+    TSharedPtr<FJsonObject> JsonObject;
+    TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(JsonString);
+
+    if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
+    {
+        TSharedPtr<FJsonObject> CurrentObject = JsonObject;
+
+        for (int32 i = 0; i < FieldNames.Num() - 1; ++i)
+        {
+            if (CurrentObject->HasField(FieldNames[i]) && CurrentObject->GetField<EJson::Object>(FieldNames[i]).IsValid())
+            {
+                CurrentObject = CurrentObject->GetObjectField(FieldNames[i]);
+            }
+            else
+            {
+                UE_LOG(LogTemp, Warning, TEXT("Field '%s' does not exist or is not a JSON object."), *FieldNames[i]);
+                return false;
+            }
+        }
+
+        if (CurrentObject->HasField(FieldNames.Last()) && CurrentObject->GetField<EJson::Array>(FieldNames.Last()).IsValid())
+        {
+            TArray<TSharedPtr<FJsonValue>> Array = CurrentObject->GetArrayField(FieldNames.Last());
+
+            if (Array.IsValidIndex(Index))
+            {
+                Array.RemoveAt(Index);
+                CurrentObject->SetArrayField(FieldNames.Last(), Array);
+
+                TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&OutJsonString);
+                if (FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer))
+                {
+                    return true;
+                }
+                else
+                {
+                    UE_LOG(LogTemp, Error, TEXT("Failed to serialize updated JSON object."));
+                    return false;
+                }
+            }
+            else
+            {
+                UE_LOG(LogTemp, Warning, TEXT("Index '%d' is out of bounds for array field '%s'."), Index, *FieldNames.Last());
+                return false;
+            }
+        }
+        else
+        {
+            UE_LOG(LogTemp, Warning, TEXT("Field '%s' is not an array or does not exist."), *FieldNames.Last());
+            return false;
+        }
+    }
+    else
+    {
+        UE_LOG(LogTemp, Error, TEXT("Failed to deserialize JSON string."));
+        return false;
+    }
+}
+
+bool UUnrealAutoModUtilities::GetJsonArrayEntries(const FString& JsonString, const TArray<FString>& FieldNames, TArray<FString>& Entries)
+{
+    TSharedPtr<FJsonObject> JsonObject;
+    TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(JsonString);
+
+    if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
+    {
+        TSharedPtr<FJsonObject> CurrentObject = JsonObject;
+
+        for (int32 i = 0; i < FieldNames.Num() - 1; ++i)
+        {
+            if (CurrentObject->HasField(FieldNames[i]) && CurrentObject->GetField<EJson::Object>(FieldNames[i]).IsValid())
+            {
+                CurrentObject = CurrentObject->GetObjectField(FieldNames[i]);
+            }
+            else
+            {
+                UE_LOG(LogTemp, Warning, TEXT("Field '%s' does not exist or is not a JSON object."), *FieldNames[i]);
+                return false;
+            }
+        }
+
+        if (CurrentObject->HasField(FieldNames.Last()) && CurrentObject->GetField<EJson::Array>(FieldNames.Last()).IsValid())
+        {
+            TArray<TSharedPtr<FJsonValue>> Array = CurrentObject->GetArrayField(FieldNames.Last());
+
+            for (const TSharedPtr<FJsonValue>& Value : Array)
+            {
+                Entries.Add(Value->AsString());
+            }
+
+            return true;
+        }
+        else
+        {
+            UE_LOG(LogTemp, Warning, TEXT("Field '%s' is not an array or does not exist."), *FieldNames.Last());
+            return false;
+        }
+    }
+    else
+    {
+        UE_LOG(LogTemp, Error, TEXT("Failed to deserialize JSON string."));
+        return false;
+    }
+}
+
+bool UUnrealAutoModUtilities::CheckIfJsonFieldExists(const FString& JsonString, const TArray<FString>& FieldNames, bool& Exists)
+{
+    TSharedPtr<FJsonObject> JsonObject;
+    TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(JsonString);
+
+    if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
+    {
+        TSharedPtr<FJsonObject> CurrentObject = JsonObject;
+
+        for (int32 i = 0; i < FieldNames.Num(); ++i)
+        {
+            if (CurrentObject->HasField(FieldNames[i]))
+            {
+                if (i < FieldNames.Num() - 1)
+                {
+                    if (CurrentObject->GetField<EJson::Object>(FieldNames[i]).IsValid())
+                    {
+                        CurrentObject = CurrentObject->GetObjectField(FieldNames[i]);
+                    }
+                    else
+                    {
+                        Exists = false;
+                        return true;
+                    }
+                }
+            }
+            else
+            {
+                Exists = false;
+                return true;
+            }
+        }
+
+        Exists = true;
+        return true;
+    }
+    else
+    {
+        UE_LOG(LogTemp, Error, TEXT("Failed to deserialize JSON string."));
+        Exists = false;
+        return false;
     }
 }

@@ -7,7 +7,7 @@
 #include "UnrealAutoModUtilities.generated.h"
 
 UCLASS()
-class UNREALAUTOMOD_API UUnrealAutoModUtilities : public UObject
+class UNREALAUTOMOD_API UUnrealAutoModUtilities : public UBlueprintFunctionLibrary
 {
     GENERATED_BODY()
 
@@ -73,11 +73,29 @@ public:
         static void OpenWebsite(FString URL);
 
     UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
-        static bool GetJsonFieldAsString(const FString& JsonString, const FString& FieldName, FString& FieldValue);
+        static bool SetJsonFieldAsString(const FString& JsonString, const TArray<FString>& FieldNames, const FString& FieldValue, FString& OutJsonString);
 
     UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
-        static bool SetJsonFieldAsString(const FString& JsonString, const FString& FieldName, const FString& FieldValue, FString& OutJsonString);
+        static bool GetJsonFieldAsString(const FString& JsonString, const TArray<FString>& FieldNames, FString& FieldValue);
 
     UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
         static bool WriteStringToFile(const FString& FileName, const FString& FileContents);
+
+    UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
+        static bool RemoveJsonField(const FString& JsonString, const TArray<FString>& FieldNames, FString& OutJsonString);
+
+    UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
+        static bool ReadJsonField(const FString& JsonString, const TArray<FString>& FieldNames, FString& FieldValue);
+
+    UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
+        static bool AddJsonListEntry(const FString& JsonString, const TArray<FString>& FieldNames, const FString& EntryValue, FString& OutJsonString);
+
+    UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
+        static bool RemoveJsonListEntry(const FString& JsonString, const TArray<FString>& FieldNames, int32 Index, FString& OutJsonString);
+
+    UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
+        static bool GetJsonArrayEntries(const FString& JsonString, const TArray<FString>& FieldNames, TArray<FString>& Entries);
+
+    UFUNCTION(BlueprintCallable, Category = "Utilities")
+        static bool CheckIfJsonFieldExists(const FString& JsonString, const TArray<FString>& FieldNames, bool& Exists);
 };
