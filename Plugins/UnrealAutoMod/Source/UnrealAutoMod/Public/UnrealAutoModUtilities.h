@@ -7,7 +7,7 @@
 #include "UnrealAutoModUtilities.generated.h"
 
 UCLASS()
-class UNREALAUTOMOD_API UUnrealAutoModUtilities : public UBlueprintFunctionLibrary
+class UNREALAUTOMOD_API UUnrealAutoModUtilities : public UObject
 {
     GENERATED_BODY()
 
@@ -96,6 +96,6 @@ public:
     UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
         static bool GetJsonArrayEntries(const FString& JsonString, const TArray<FString>& FieldNames, TArray<FString>& Entries);
 
-    UFUNCTION(BlueprintCallable, Category = "Utilities")
+    UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
         static bool CheckIfJsonFieldExists(const FString& JsonString, const TArray<FString>& FieldNames, bool& Exists);
 };

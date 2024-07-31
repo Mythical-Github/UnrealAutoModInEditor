@@ -634,34 +634,54 @@ bool UUnrealAutoModUtilities::GetJsonArrayEntries(const FString& JsonString, con
     {
         TSharedPtr<FJsonObject> CurrentObject = JsonObject;
 
-        for (int32 i = 0; i < FieldNames.Num() - 1; ++i)
+        for (int32 i = 0; i < FieldNames.Num(); ++i)
         {
-            if (CurrentObject->HasField(FieldNames[i]) && CurrentObject->GetField<EJson::Object>(FieldNames[i]).IsValid())
+            if (CurrentObject->HasField(FieldNames[i]))
             {
-                CurrentObject = CurrentObject->GetObjectField(FieldNames[i]);
+                if (i < FieldNames.Num() - 1)
+                {
+                    if (CurrentObject->GetField<EJson::Object>(FieldNames[i]).IsValid())
+                    {
+                        CurrentObject = CurrentObject->GetObjectField(FieldNames[i]);
+                    }
+                    else
+                    {
+                        UE_LOG(LogTemp, Error, TEXT("Field '%s' is not an object."), *FieldNames[i]);
+                        return false;
+                    }
+                }
+                else
+                {
+                    const TArray<TSharedPtr<FJsonValue>>* JsonArray;
+                    if (CurrentObject->TryGetArrayField(FieldNames[i], JsonArray))
+                    {
+                        Entries.Empty();
+                        for (const TSharedPtr<FJsonValue>& JsonValue : *JsonArray)
+                        {
+                            if (JsonValue->Type == EJson::String)
+                            {
+                                Entries.Add(JsonValue->AsString());
+                            }
+                            else
+                            {
+                                UE_LOG(LogTemp, Error, TEXT("Json Value of type '%d' used as 'String'."), (int32)JsonValue->Type);
+                                return false;
+                            }
+                        }
+                        return true;
+                    }
+                    else
+                    {
+                        UE_LOG(LogTemp, Error, TEXT("Field '%s' is not an array."), *FieldNames[i]);
+                        return false;
+                    }
+                }
             }
             else
             {
-                UE_LOG(LogTemp, Warning, TEXT("Field '%s' does not exist or is not a JSON object."), *FieldNames[i]);
+                UE_LOG(LogTemp, Error, TEXT("Field '%s' does not exist."), *FieldNames[i]);
                 return false;
             }
-        }
-
-        if (CurrentObject->HasField(FieldNames.Last()) && CurrentObject->GetField<EJson::Array>(FieldNames.Last()).IsValid())
-        {
-            TArray<TSharedPtr<FJsonValue>> Array = CurrentObject->GetArrayField(FieldNames.Last());
-
-            for (const TSharedPtr<FJsonValue>& Value : Array)
-            {
-                Entries.Add(Value->AsString());
-            }
-
-            return true;
-        }
-        else
-        {
-            UE_LOG(LogTemp, Warning, TEXT("Field '%s' is not an array or does not exist."), *FieldNames.Last());
-            return false;
         }
     }
     else
@@ -669,6 +689,8 @@ bool UUnrealAutoModUtilities::GetJsonArrayEntries(const FString& JsonString, con
         UE_LOG(LogTemp, Error, TEXT("Failed to deserialize JSON string."));
         return false;
     }
+
+    return false;
 }
 
 bool UUnrealAutoModUtilities::CheckIfJsonFieldExists(const FString& JsonString, const TArray<FString>& FieldNames, bool& Exists)
