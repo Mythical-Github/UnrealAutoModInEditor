@@ -1,0 +1,431 @@
+﻿Log file open, 08/13/24 00:02:25
+LogInit:Display: Running engine for game: UAM_Uproject
+LogPlatformFile: Not using cached read wrapper
+LogInit:Display: RandInit(-795759708) SRandInit(-795759705).
+LogInit: Using version manifest at CL 0 with build ID '320bd2db-b20f-4847-b110-546ed0ad14b7'
+LogTaskGraph: Started task graph with 4 named threads and 11 total threads.
+LogStats: Stats thread started at 0.157122
+LogInit: Version: 4.11.2-0+UE4
+LogInit: API Version: 0
+LogInit: Compiled (64-bit): Jun 29 2024 20:51:17
+LogInit: Compiled with Visual C++: 19.00.24215.01
+LogInit: Build Configuration: Development
+LogInit: Branch Name: UE4
+LogInit: Command line:  
+LogInit: Base directory: D:/unreal_engine_installs/UE_4.11_source_build/Engine/Binaries/Win64/
+LogInit: Installed Engine Build: 0
+LogInit: Using libcurl 7.41.0
+LogInit:  - built for x86_64-pc-win32
+LogInit:  - supports SSL with WinSSL
+LogInit:  - other features:
+LogInit:      CURL_VERSION_SSL
+LogInit:      CURL_VERSION_IPV6
+LogInit:      CURL_VERSION_ASYNCHDNS
+LogInit:      CURL_VERSION_LARGEFILE
+LogInit:      CURL_VERSION_IDN
+LogInit:  CurlRequestOptions (configurable via config and command line):
+LogInit:  - bVerifyPeer = true  - Libcurl will verify peer certificate
+LogInit:  - bUseHttpProxy = false  - Libcurl will NOT use HTTP proxy
+LogInit:  - bDontReuseConnections = false  - Libcurl will reuse connections
+LogInit:  - CertBundlePath = nullptr  - Libcurl will use whatever was configured at build time.
+LogInit: Presizing for max 16777216 objects, including 0 objects not considered by GC, pre-allocating 0 bytes for permanent pool.
+LogInit: Object subsystem initialized
+[2024.08.13-04.02.25:335][  0]LogInit: Selected Device Profile: [Windows]
+[2024.08.13-04.02.25:335][  0]LogInit: Applying CVar settings loaded from the selected device profile: [Windows]
+[2024.08.13-04.02.25:342][  0]LogInit: Computer: DESKTOP-H8M04FC
+[2024.08.13-04.02.25:342][  0]LogInit: User: Mythical
+[2024.08.13-04.02.25:342][  0]LogInit: CPU Page size=65536, Cores=8
+[2024.08.13-04.02.25:342][  0]LogInit: High frequency timer resolution =10.000000 MHz
+[2024.08.13-04.02.25:342][  0]LogMemory: Memory total: Physical=15.7GB (16GB approx)
+[2024.08.13-04.02.25:342][  0]LogMemory: Platform Memory Stats for Windows
+[2024.08.13-04.02.25:342][  0]LogMemory: Process Physical Memory: 316.52 MB used, 316.53 MB peak
+[2024.08.13-04.02.25:342][  0]LogMemory: Process Virtual Memory: 316.55 MB used, 316.55 MB peak
+[2024.08.13-04.02.25:342][  0]LogMemory: Physical Memory: 10589.21 MB used, 16085.50 MB total
+[2024.08.13-04.02.25:342][  0]LogMemory: Virtual Memory: 4769.20 MB used, 134217728.00 MB total
+[2024.08.13-04.02.25:425][  0]LogTextLocalizationManager: No specific translations for ('en-US') exist, so ('en') translations will be used.
+[2024.08.13-04.02.25:767][  0]LogD3D11RHI: D3D11 adapters:
+[2024.08.13-04.02.25:926][  0]LogD3D11RHI:    0. 'NVIDIA GeForce RTX 3070 Laptop GPU' (Feature Level 11_0)
+[2024.08.13-04.02.25:926][  0]LogD3D11RHI:       8020MB of dedicated video memory, 0MB of dedicated system memory, and 8042MB of shared system memory, 1 output[s]
+[2024.08.13-04.02.25:957][  0]LogD3D11RHI:    1. 'Intel(R) UHD Graphics' (Feature Level 11_0)
+[2024.08.13-04.02.25:957][  0]LogD3D11RHI:       128MB of dedicated video memory, 0MB of dedicated system memory, and 8042MB of shared system memory, 1 output[s]
+[2024.08.13-04.02.25:960][  0]LogD3D11RHI:    2. 'Microsoft Basic Render Driver' (Feature Level 11_0)
+[2024.08.13-04.02.25:960][  0]LogD3D11RHI:       0MB of dedicated video memory, 0MB of dedicated system memory, and 8042MB of shared system memory, 0 output[s]
+[2024.08.13-04.02.25:960][  0]LogD3D11RHI: Chosen D3D11 Adapter: 0
+[2024.08.13-04.02.25:969][  0]LogD3D11RHI: Creating new Direct3DDevice
+[2024.08.13-04.02.25:969][  0]LogD3D11RHI:     Adapter Name: NVIDIA GeForce RTX 3070 Laptop GPU
+[2024.08.13-04.02.25:969][  0]LogD3D11RHI:   Driver Version: Unknown (internal Unknown)
+[2024.08.13-04.02.25:969][  0]LogD3D11RHI:      Driver Date: Unknown
+[2024.08.13-04.02.25:969][  0]LogRHI: Texture pool is 1361 MB (70% of 1945 MB)
+[2024.08.13-04.02.26:082][  0]LogD3D11RHI: Async texture creation enabled
+[2024.08.13-04.02.26:092][  0]LogShaderCompilers: Guid format shader working directory is -8 characters bigger than the processId version (C:/Users/Mythical/Documents/GitHub/UnrealAutoModInEditor/Intermediate/Shaders/WorkingDirectory/37264/).
+[2024.08.13-04.02.26:093][  0]LogShaderCompilers: Cleaned the shader compiler working directory 'C:/Users/Mythical/AppData/Local/Temp/UnrealShaderWorkingDir/05147C104F2EECBD483AD3BEDE0D6516/'.
+[2024.08.13-04.02.26:093][  0]LogShaderCompilers:Display: Using Local Shader Compiler.
+[2024.08.13-04.02.26:857][  0]LogTemp:Display: Loaded TP WindowsTargetPlatform
+[2024.08.13-04.02.26:861][  0]LogTemp:Display: Loaded TP WindowsNoEditorTargetPlatform
+[2024.08.13-04.02.26:866][  0]LogTemp:Display: Loaded TP WindowsServerTargetPlatform
+[2024.08.13-04.02.26:870][  0]LogTemp:Display: Loaded TP WindowsClientTargetPlatform
+[2024.08.13-04.02.26:875][  0]LogTemp:Display: Loaded TP AllDesktopTargetPlatform
+[2024.08.13-04.02.26:878][  0]LogTemp:Display: Loaded TP AndroidTargetPlatform
+[2024.08.13-04.02.26:882][  0]LogTemp:Display: Loaded TP Android_PVRTCTargetPlatform
+[2024.08.13-04.02.26:885][  0]LogTemp:Display: Loaded TP Android_ATCTargetPlatform
+[2024.08.13-04.02.26:888][  0]LogTemp:Display: Loaded TP Android_DXTTargetPlatform
+[2024.08.13-04.02.26:891][  0]LogTemp:Display: Loaded TP Android_ETC1TargetPlatform
+[2024.08.13-04.02.26:895][  0]LogTemp:Display: Loaded TP Android_ETC2TargetPlatform
+[2024.08.13-04.02.26:898][  0]LogTemp:Display: Loaded TP Android_ASTCTargetPlatform
+[2024.08.13-04.02.26:901][  0]LogTemp:Display: Loaded TP Android_MultiTargetPlatform
+[2024.08.13-04.02.26:903][  0]LogTemp:Display: Loaded TP HTML5TargetPlatform
+[2024.08.13-04.02.26:920][  0]LogTemp:Display: Loaded TP IOSTargetPlatform
+[2024.08.13-04.02.26:923][  0]LogTemp:Display: Loaded TP TVOSTargetPlatform
+[2024.08.13-04.02.26:923][  0]LogTargetPlatformManager:Display: Building Assets For Windows
+[2024.08.13-04.02.26:995][  0]LogDerivedDataCache:Display: Max Cache Size: 512 MB
+[2024.08.13-04.02.27:027][  0]LogDerivedDataCache: Loaded boot cache 0.03s 46MB C:/Users/Mythical/Documents/GitHub/UnrealAutoModInEditor/DerivedDataCache/Boot.ddc.
+[2024.08.13-04.02.27:027][  0]LogDerivedDataCache:Display: Loaded Boot cache: C:/Users/Mythical/Documents/GitHub/UnrealAutoModInEditor/DerivedDataCache/Boot.ddc
+[2024.08.13-04.02.27:027][  0]LogDerivedDataCache: FDerivedDataBackendGraph:  Pak pak cache file C:/Users/Mythical/Documents/GitHub/UnrealAutoModInEditor/DerivedDataCache/DDC.ddp not found, will not use a pak cache.
+[2024.08.13-04.02.27:027][  0]LogDerivedDataCache: Unable to find inner node Pak for hierarchical cache Hierarchy.
+[2024.08.13-04.02.27:027][  0]LogDerivedDataCache: FDerivedDataBackendGraph:  EnginePak pak cache file ../../../Engine/DerivedDataCache/DDC.ddp not found, will not use a pak cache.
+[2024.08.13-04.02.27:027][  0]LogDerivedDataCache: Unable to find inner node EnginePak for hierarchical cache Hierarchy.
+[2024.08.13-04.02.27:039][  0]LogDerivedDataCache: Using Local data cache path ../../../Engine/DerivedDataCache: Writable
+[2024.08.13-04.02.27:039][  0]LogDerivedDataCache: Shared data cache path not found in *engine.ini, will not use an Shared cache.
+[2024.08.13-04.02.27:039][  0]LogDerivedDataCache: Unable to find inner node Shared for hierarchical cache Hierarchy.
+[2024.08.13-04.02.27:186][  0]LogInit: Selected Device Profile: [Windows]
+[2024.08.13-04.02.27:187][  0]LogContentStreaming: Texture pool size is 0.00 MB
+[2024.08.13-04.02.27:220][  0]LogMaterial: Uniform references updated for custom material expression Custom.
+[2024.08.13-04.02.27:343][  0]LogMeshUtilities: No automatic mesh reduction module available
+[2024.08.13-04.02.27:343][  0]LogMeshUtilities: No automatic mesh merging module available
+[2024.08.13-04.02.27:343][  0]LogMeshUtilities: No distributed automatic mesh merging module available
+[2024.08.13-04.02.27:572][  0]LogUObjectArray: 27672 objects as part of root set at end of initial load.
+[2024.08.13-04.02.27:572][  0]LogUObjectAllocator: 5590152 out of 0 bytes used by permanent object pool.
+[2024.08.13-04.02.27:572][  0]LogUObjectArray: CloseDisregardForGC: 0/0 objects in disregard for GC pool
+[2024.08.13-04.02.27:578][  0]LogInit: WinSock: version 1.1 (2.2), MaxSocks=32767, MaxUdp=65467
+[2024.08.13-04.02.27:665][  0]LogSlate: SlateFontCache - WITH_FREETYPE: 1, WITH_HARFBUZZ: 1
+[2024.08.13-04.02.27:665][  0]LogSlate: SlateFontCache - WITH_FREETYPE: 1, WITH_HARFBUZZ: 1
+[2024.08.13-04.02.27:775][  0]LogStreaming:Warning: Failed to read file '../../../Engine/Content/Editor/Slate/Common/Selection_16x.png' error.
+[2024.08.13-04.02.27:775][  0]LogSlate: Could not find file for Slate resource: ../../../Engine/Content/Editor/Slate/Common/Selection_16x.png
+[2024.08.13-04.02.27:775][  0]LogStreaming:Warning: Failed to read file '../../../Engine/Content/Editor/Slate/Common/Selection_16x.png' error.
+[2024.08.13-04.02.27:775][  0]LogSlate: Could not find file for Slate resource: ../../../Engine/Content/Editor/Slate/Common/Selection_16x.png
+[2024.08.13-04.02.27:775][  0]LogStreaming:Warning: Failed to read file '../../../Engine/Content/Editor/Slate/Common/Selection_16x.png' error.
+[2024.08.13-04.02.27:775][  0]LogSlate: Could not find file for Slate resource: ../../../Engine/Content/Editor/Slate/Common/Selection_16x.png
+[2024.08.13-04.02.28:395][  0]LogUdpMessaging: Initializing bridge on interface 0.0.0.0:0 to multicast group 230.0.0.1:6666.
+[2024.08.13-04.02.28:518][  0]LogAssetRegistry: FAssetRegistry took 0.0219 seconds to start up
+[2024.08.13-04.02.28:708][  0]SourceControl: Info Source control is disabled
+[2024.08.13-04.02.28:794][  0]SourceControl: Info Source control is disabled
+[2024.08.13-04.02.28:822][  0]SourceControl: Info Source control is disabled
+[2024.08.13-04.02.28:840][  0]SourceControl: Info Source control is disabled
+[2024.08.13-04.02.29:088][  0]LogHMD: Failed to initialize OpenVR with code 110
+[2024.08.13-04.02.29:248][  0]LogStreaming:Warning: Failed to read file '../../../Engine/Content/Editor/Slate/Common/Selection_16x.png' error.
+[2024.08.13-04.02.29:248][  0]LogSlate: Could not find file for Slate resource: ../../../Engine/Content/Editor/Slate/Common/Selection_16x.png
+[2024.08.13-04.02.29:248][  0]LogStreaming:Warning: Failed to read file '../../../Engine/Content/Editor/Slate/Common/Selection_16x.png' error.
+[2024.08.13-04.02.29:248][  0]LogSlate: Could not find file for Slate resource: ../../../Engine/Content/Editor/Slate/Common/Selection_16x.png
+[2024.08.13-04.02.29:248][  0]LogStreaming:Warning: Failed to read file '../../../Engine/Content/Editor/Slate/Common/Selection_16x.png' error.
+[2024.08.13-04.02.29:248][  0]LogSlate: Could not find file for Slate resource: ../../../Engine/Content/Editor/Slate/Common/Selection_16x.png
+[2024.08.13-04.02.29:796][  0]LogEngine: Initializing Engine...
+[2024.08.13-04.02.29:924][  0]LogAIModule: Creating AISystem for world NewWorld
+[2024.08.13-04.02.29:938][  0]LogInit: XAudio2 using 'Speakers (Realtek(R) Audio)' : 2 channels at 48 kHz using 32 bits per sample (channel mask 0x3)
+[2024.08.13-04.02.29:985][  0]LogInit: FAudioDevice initialized.
+[2024.08.13-04.02.30:007][  0]LogDerivedDataCache: Saved boot cache 0.02s 46MB C:/Users/Mythical/Documents/GitHub/UnrealAutoModInEditor/DerivedDataCache/Boot.ddc.
+[2024.08.13-04.02.30:010][  0]LogInit: Texture streaming: Enabled
+[2024.08.13-04.02.30:038][  0]LogInit: Transaction tracking system initialized
+[2024.08.13-04.02.30:058][  0]BlueprintLog: New page: Editor Load
+[2024.08.13-04.02.30:128][  0]LocalizationService: Info Localization service is disabled
+[2024.08.13-04.02.30:208][  0]LogConsoleResponse:Display: 
+[2024.08.13-04.02.30:321][  0]LogCook:Display: Max memory allowance for cook 8192mb
+[2024.08.13-04.02.30:321][  0]LogCook:Display: Mobile HDR setting 1
+[2024.08.13-04.02.30:321][  0]LogCook:Display: Done creating registry. It took  0.00s.
+[2024.08.13-04.02.30:390][  0]LogFileCache: Scanning file cache for directory 'C:/Users/Mythical/Documents/GitHub/UnrealAutoModInEditor/Content/' took 0.01s
+[2024.08.13-04.02.30:390][  0]SourceControl: Info Source control is disabled
+[2024.08.13-04.02.30:390][  0]Cmd: MAP LOAD FILE="C:/Users/Mythical/Documents/GitHub/UnrealAutoModInEditor/Plugins/UnrealAutoMod/Content/NewWorld.umap" TEMPLATE=0 SHOWPROGRESS=1 FEATURELEVEL=3
+[2024.08.13-04.02.30:390][  0]LogEditorServer:Warning: Can't find file 'C:/Users/Mythical/Documents/GitHub/UnrealAutoModInEditor/Plugins/UnrealAutoMod/Content/NewWorld.umap'
+[2024.08.13-04.02.30:390][  0]Cmd: MAP CHECKDEP NOCLEARLOG
+[2024.08.13-04.02.30:465][  0]MapCheck: Info Map check complete: 0 Error(s), 0 Warning(s), took 74.195ms to complete.
+[2024.08.13-04.02.30:465][  0]LogFileHelpers: Loading map 'NewWorld' took 0.075
+[2024.08.13-04.02.30:557][  0]LogCollectionManager: Loaded 0 collections in 0.001265 seconds
+[2024.08.13-04.02.30:597][  0]LogFileCache: Scanning file cache for directory 'C:/Users/Mythical/Documents/GitHub/UnrealAutoModInEditor/Saved/Collections/' took 0.01s
+[2024.08.13-04.02.30:597][  0]LogFileCache: Scanning file cache for directory 'C:/Users/Mythical/Documents/GitHub/UnrealAutoModInEditor/Content/Developers/Mythical/Collections/' took 0.01s
+[2024.08.13-04.02.30:597][  0]LogFileCache: Scanning file cache for directory 'C:/Users/Mythical/Documents/GitHub/UnrealAutoModInEditor/Content/Collections/' took 0.01s
+[2024.08.13-04.02.30:597][  0]LogCollectionManager: Rebuilt the GUID cache for 0 collections in 0.000002 seconds
+[2024.08.13-04.02.30:605][  0]LogContentBrowser: Native class hierarchy populated in 0.0077 seconds. Added 1981 classes and 346 folders.
+[2024.08.13-04.02.30:608][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: Construct from data asset -  0.000 s
+[2024.08.13-04.02.30:608][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: GameplayTagTreeChangedEvent.Broadcast -  0.000 s
+[2024.08.13-04.02.30:610][  0]LogContentBrowser: Native class hierarchy updated for 'GameplayTags' in 0.0014 seconds. Added 12 classes and 0 folders.
+[2024.08.13-04.02.30:614][  0]LogContentBrowser: Native class hierarchy updated for 'WidgetCarousel' in 0.0013 seconds. Added 0 classes and 0 folders.
+[2024.08.13-04.02.30:621][  0]LogContentBrowser: Native class hierarchy updated for 'SuperSearch' in 0.0014 seconds. Added 1 classes and 2 folders.
+[2024.08.13-04.02.30:673][  0]LogContentBrowser: Native class hierarchy updated for 'AddContentDialog' in 0.0016 seconds. Added 0 classes and 0 folders.
+[2024.08.13-04.02.30:719][  0]LogCrashTracker: Crashtracker disabled due to settings.
+[2024.08.13-04.02.30:728][  0]LogUObjectGlobals:Warning: Failed to find object 'Class None.'
+[2024.08.13-04.02.30:756][  0]LogContentBrowser: Native class hierarchy updated for 'HierarchicalLODOutliner' in 0.0015 seconds. Added 1 classes and 2 folders.
+[2024.08.13-04.02.30:756][  0]LogLoad: Full Startup: 6.72 seconds (BP compile: 0.00 seconds)
+[2024.08.13-04.02.30:757][  0]LogExternalProfiler:Warning: No registered external profiler was matched with a command-line switch (or the DLL could not be loaded).  External profiling features will not be available.
+[2024.08.13-04.02.31:096][  0]LogOcInput: OculusInput pre-init called
+[2024.08.13-04.02.31:147][  0]LogContentStreaming: Texture pool size now 1000 MB
+[2024.08.13-04.02.31:429][  1]LogRenderer: Reallocating scene render targets to support 1168x292 (Frame:2).
+[2024.08.13-04.02.31:430][  1]LogAssetRegistry: Asset discovery search completed in 2.9339 seconds
+[2024.08.13-04.02.31:430][  1]LogCollectionManager: Rebuilt the object cache for 0 collections in 0.000001 seconds (found 0 objects)
+[2024.08.13-04.02.31:430][  1]LogCollectionManager: Fixed up redirectors for 0 collections in 0.000066 seconds (updated 0 objects)
+[2024.08.13-04.03.12:229][249]LogBlueprint:Error: [compiler WBP_Base_Button] Error Could not find a function named "GetAllInstancedObjectsOfClass" in 'UnrealAutoModUtilities'.
+Make sure 'UnrealAutoModUtilities' has been compiled for  Get All Instanced Objects Of Class 
+[2024.08.13-04.03.12:237][249]LogBlueprint:Warning: [compiler WBP_Base_Button] Warning [0048.20] Compile of WBP_Base_Button failed. 1 Fatal Issue(s) 0 Warning(s) [in 17 ms]
+[2024.08.13-04.03.12:237][249]LogBlueprint:Warning: [compiler WBP_Base_Button] Warning [0048.20] Compile of WBP_Base_Button failed. 1 Fatal Issue(s) 1 Warning(s) [in 0 ms]
+[2024.08.13-04.03.12:237][249]LogBlueprint:Warning: [compiler WBP_Base_Button] Warning [0048.20] Compile of WBP_Base_Button failed. 1 Fatal Issue(s) 2 Warning(s) [in 0 ms]
+[2024.08.13-04.03.16:987][514]LogRenderer: Reallocating scene render targets to support 1168x460 (Frame:328).
+[2024.08.13-04.03.29:853][284]LogRenderer: Reallocating scene render targets to support 1168x480 (Frame:716).
+[2024.08.13-04.03.31:338][372]LogRenderer: Reallocating scene render targets to support 1716x480 (Frame:755).
+[2024.08.13-04.03.41:149][940]LogContentBrowser: Native class hierarchy updated for 'BlueprintGraph' in 0.0018 seconds. Added 108 classes and 0 folders.
+[2024.08.13-04.03.44:645][117]BlueprintLog: New page: Compile WBP_Base_TextBlock
+[2024.08.13-04.03.44:742][117]BlueprintEditorCompileResults: Info [0080.71] Compile of WBP_Base_TextBlock successful! [in 96 ms]
+[2024.08.13-04.03.45:090][136]LogSavePackage: Save=3.01ms
+[2024.08.13-04.03.45:090][136]LogSavePackage: Moving 'C:/Users/Mythical/Documents/GitHub/UnrealAutoModInEditor/Saved/WBP_Base_TextBlock8EC2D54B423A3E16C8C85688F262CF83.tmp' to 'C:/Users/Mythical/Documents/GitHub/UnrealAutoModInEditor/Plugins/UnrealAutoMod/Content/Widgets/Bases/WBP_Base_TextBlock.uasset'
+[2024.08.13-04.03.45:091][136]LogSavePackage: Total save time: 6.10ms
+[2024.08.13-04.03.45:091][136]LogSavePackage:Display: Finished SavePackage C:/Users/Mythical/Documents/GitHub/UnrealAutoModInEditor/Plugins/UnrealAutoMod/Content/Widgets/Bases/WBP_Base_TextBlock.uasset
+[2024.08.13-04.04.36:292][177]BlueprintLog: New page: Compile WBP_Base_Button
+[2024.08.13-04.04.36:316][177]LogBlueprint:Error: [compiler WBP_Base_Button] Error Could not find a function named "GetAllInstancedObjectsOfClass" in 'UnrealAutoModUtilities'.
+Make sure 'UnrealAutoModUtilities' has been compiled for  Get All Instanced Objects Of Class 
+[2024.08.13-04.04.36:460][177]LogBlueprint:Warning: [compiler WBP_Base_Button] Warning [0132.43] Compile of WBP_Base_Button failed. 1 Fatal Issue(s) 0 Warning(s) [in 167 ms]
+[2024.08.13-04.04.36:460][177]BlueprintEditorCompileResults:Error: Error Could not find a function named "GetAllInstancedObjectsOfClass" in 'UnrealAutoModUtilities'.
+Make sure 'UnrealAutoModUtilities' has been compiled for  Get All Instanced Objects Of Class 
+[2024.08.13-04.04.36:460][177]BlueprintEditorCompileResults:Warning: Warning [0132.43] Compile of WBP_Base_Button failed. 1 Fatal Issue(s) 0 Warning(s) [in 167 ms]
+[2024.08.13-04.04.36:900][198]LogSavePackage: Save=65.63ms
+[2024.08.13-04.04.36:901][198]LogSavePackage: Moving 'C:/Users/Mythical/Documents/GitHub/UnrealAutoModInEditor/Saved/WBP_Base_Button94A897D14457836B8ADD40BEB8661698.tmp' to 'C:/Users/Mythical/Documents/GitHub/UnrealAutoModInEditor/Plugins/UnrealAutoMod/Content/Widgets/Bases/WBP_Base_Button.uasset'
+[2024.08.13-04.04.36:902][198]LogSavePackage: Total save time: 70.18ms
+[2024.08.13-04.04.36:903][198]LogSavePackage:Display: Finished SavePackage C:/Users/Mythical/Documents/GitHub/UnrealAutoModInEditor/Plugins/UnrealAutoMod/Content/Widgets/Bases/WBP_Base_Button.uasset
+[2024.08.13-04.05.10:188][173]BlueprintLog: New page: Compile WBP_Base_Button
+[2024.08.13-04.05.10:212][173]LogBlueprint:Error: [compiler WBP_Base_Button] Error Could not find a function named "GetAllInstancedObjectsOfClass" in 'UnrealAutoModUtilities'.
+Make sure 'UnrealAutoModUtilities' has been compiled for  Get All Instanced Objects Of Class 
+[2024.08.13-04.05.10:489][173]LogBlueprint:Warning: [compiler WBP_Base_Button] Warning [0166.46] Compile of WBP_Base_Button failed. 1 Fatal Issue(s) 0 Warning(s) [in 301 ms]
+[2024.08.13-04.05.10:490][173]BlueprintEditorCompileResults:Error: Error Could not find a function named "GetAllInstancedObjectsOfClass" in 'UnrealAutoModUtilities'.
+Make sure 'UnrealAutoModUtilities' has been compiled for  Get All Instanced Objects Of Class 
+[2024.08.13-04.05.10:490][173]BlueprintEditorCompileResults:Warning: Warning [0166.46] Compile of WBP_Base_Button failed. 1 Fatal Issue(s) 0 Warning(s) [in 301 ms]
+[2024.08.13-04.05.37:821][790]BlueprintLog: New page: Compile WBP_Base_Button
+[2024.08.13-04.05.37:846][790]LogBlueprint:Error: [compiler WBP_Base_Button] Error Could not find a function named "GetAllInstancedObjectsOfClass" in 'UnrealAutoModUtilities'.
+Make sure 'UnrealAutoModUtilities' has been compiled for  Get All Instanced Objects Of Class 
+[2024.08.13-04.05.38:127][790]LogBlueprint:Warning: [compiler WBP_Base_Button] Warning [0194.09] Compile of WBP_Base_Button failed. 1 Fatal Issue(s) 0 Warning(s) [in 305 ms]
+[2024.08.13-04.05.38:127][790]BlueprintEditorCompileResults:Error: Error Could not find a function named "GetAllInstancedObjectsOfClass" in 'UnrealAutoModUtilities'.
+Make sure 'UnrealAutoModUtilities' has been compiled for  Get All Instanced Objects Of Class 
+[2024.08.13-04.05.38:127][790]BlueprintEditorCompileResults:Warning: Warning [0194.09] Compile of WBP_Base_Button failed. 1 Fatal Issue(s) 0 Warning(s) [in 305 ms]
+[2024.08.13-04.05.38:410][802]LogSavePackage: Save=57.04ms
+[2024.08.13-04.05.38:410][802]LogSavePackage: Moving 'C:/Users/Mythical/Documents/GitHub/UnrealAutoModInEditor/Saved/WBP_Base_Button34DE23F54D5E53DCBF858D99F28B3C40.tmp' to 'C:/Users/Mythical/Documents/GitHub/UnrealAutoModInEditor/Plugins/UnrealAutoMod/Content/Widgets/Bases/WBP_Base_Button.uasset'
+[2024.08.13-04.05.38:412][802]LogSavePackage: Total save time: 60.62ms
+[2024.08.13-04.05.38:412][802]LogSavePackage:Display: Finished SavePackage C:/Users/Mythical/Documents/GitHub/UnrealAutoModInEditor/Plugins/UnrealAutoMod/Content/Widgets/Bases/WBP_Base_Button.uasset
+[2024.08.13-04.06.11:518][781]BlueprintLog: New page: Compile WBP_Base_Button
+[2024.08.13-04.06.11:542][781]LogBlueprint:Error: [compiler WBP_Base_Button] Error Could not find a function named "GetAllInstancedObjectsOfClass" in 'UnrealAutoModUtilities'.
+Make sure 'UnrealAutoModUtilities' has been compiled for  Get All Instanced Objects Of Class 
+[2024.08.13-04.06.11:678][781]LogBlueprint:Warning: [compiler WBP_Base_Button] Warning [0227.64] Compile of WBP_Base_Button failed. 1 Fatal Issue(s) 0 Warning(s) [in 160 ms]
+[2024.08.13-04.06.11:678][781]BlueprintEditorCompileResults:Error: Error Could not find a function named "GetAllInstancedObjectsOfClass" in 'UnrealAutoModUtilities'.
+Make sure 'UnrealAutoModUtilities' has been compiled for  Get All Instanced Objects Of Class 
+[2024.08.13-04.06.11:678][781]BlueprintEditorCompileResults:Warning: Warning [0227.64] Compile of WBP_Base_Button failed. 1 Fatal Issue(s) 0 Warning(s) [in 160 ms]
+[2024.08.13-04.06.12:065][798]LogSavePackage: Save=73.84ms
+[2024.08.13-04.06.12:066][798]LogSavePackage: Moving 'C:/Users/Mythical/Documents/GitHub/UnrealAutoModInEditor/Saved/WBP_Base_Button157DB18D47B5516FA3CCE1B866144405.tmp' to 'C:/Users/Mythical/Documents/GitHub/UnrealAutoModInEditor/Plugins/UnrealAutoMod/Content/Widgets/Bases/WBP_Base_Button.uasset'
+[2024.08.13-04.06.12:067][798]LogSavePackage: Total save time: 77.10ms
+[2024.08.13-04.06.12:068][798]LogSavePackage:Display: Finished SavePackage C:/Users/Mythical/Documents/GitHub/UnrealAutoModInEditor/Plugins/UnrealAutoMod/Content/Widgets/Bases/WBP_Base_Button.uasset
+[2024.08.13-04.06.40:816][427]Cmd: QUIT_EDITOR
+[2024.08.13-04.06.40:851][427]LogWindowsTextInputMethodSystem:Display: IME system now deactivated.
+[2024.08.13-04.06.40:886][427]LogExit: Preparing to exit.
+[2024.08.13-04.06.41:659][427]LogExit: Editor shut down
+[2024.08.13-04.06.41:660][427]LogExit: Transaction tracking system shut down
+[2024.08.13-04.06.41:760][427]LogObj: Freed 0b from 0 cluster array pools.
+[2024.08.13-04.06.41:760][427]LogExit: Object subsystem successfully closed.
+[2024.08.13-04.06.41:775][427]LogD3D11RHI: Shutdown
+[2024.08.13-04.06.41:775][427]LogD3D11RHI: CleanupD3DDevice
+[2024.08.13-04.06.41:827][427]LogD3D11RHI: ~FD3D11DynamicRHI
+[2024.08.13-04.06.41:940][427]LogDerivedDataCache: Shutdown
+[2024.08.13-04.06.41:941][427]LogModuleManager: Shutting down and abandoning module SequencerWidgets (201)
+[2024.08.13-04.06.41:941][427]LogModuleManager: Shutting down and abandoning module BlueprintGraph (200)
+[2024.08.13-04.06.41:941][427]LogModuleManager: Shutting down and abandoning module HierarchicalLODOutliner (199)
+[2024.08.13-04.06.41:941][427]LogModuleManager: Shutting down and abandoning module CrashTracker (198)
+[2024.08.13-04.06.41:941][427]LogModuleManager: Shutting down and abandoning module SuperSearch (197)
+[2024.08.13-04.06.41:941][427]LogModuleManager: Shutting down and abandoning module WidgetCarousel (196)
+[2024.08.13-04.06.41:941][427]LogModuleManager: Shutting down and abandoning module AddContentDialog (195)
+[2024.08.13-04.06.41:942][427]LogModuleManager: Shutting down and abandoning module GameplayTags (194)
+[2024.08.13-04.06.41:942][427]LogModuleManager: Shutting down and abandoning module EditorWidgets (193)
+[2024.08.13-04.06.41:942][427]LogModuleManager: Shutting down and abandoning module CollectionManager (192)
+[2024.08.13-04.06.41:942][427]LogModuleManager: Shutting down and abandoning module FoliageEdit (191)
+[2024.08.13-04.06.41:942][427]LogModuleManager: Shutting down and abandoning module LandscapeEditor (190)
+[2024.08.13-04.06.41:943][427]LogModuleManager: Shutting down and abandoning module ActorPickerMode (189)
+[2024.08.13-04.06.41:943][427]LogModuleManager: Shutting down and abandoning module GeometryMode (188)
+[2024.08.13-04.06.41:943][427]LogModuleManager: Shutting down and abandoning module TextureAlignMode (187)
+[2024.08.13-04.06.41:943][427]LogModuleManager: Shutting down and abandoning module BspMode (186)
+[2024.08.13-04.06.41:943][427]LogModuleManager: Shutting down and abandoning module PlacementMode (185)
+[2024.08.13-04.06.41:943][427]LogModuleManager: Shutting down and abandoning module AutomationWorker (184)
+[2024.08.13-04.06.41:943][427]LogModuleManager: Shutting down and abandoning module CharacterAI (183)
+[2024.08.13-04.06.41:943][427]LogModuleManager: Shutting down and abandoning module SmartSnapping (182)
+[2024.08.13-04.06.41:943][427]LogModuleManager: Shutting down and abandoning module ViewportSnapping (181)
+[2024.08.13-04.06.41:943][427]LogModuleManager: Shutting down and abandoning module LogVisualizer (180)
+[2024.08.13-04.06.41:943][427]LogModuleManager: Shutting down and abandoning module GameProjectGeneration (179)
+[2024.08.13-04.06.41:943][427]LogModuleManager: Shutting down and abandoning module IntroTutorials (178)
+[2024.08.13-04.06.41:943][427]LogModuleManager: Shutting down and abandoning module EditorLiveStreaming (177)
+[2024.08.13-04.06.41:943][427]LogModuleManager: Shutting down and abandoning module IOSPlatformEditor (176)
+[2024.08.13-04.06.41:943][427]LogModuleManager: Shutting down and abandoning module HTML5PlatformEditor (175)
+[2024.08.13-04.06.41:943][427]LogModuleManager: Shutting down and abandoning module AndroidDeviceDetection (174)
+[2024.08.13-04.06.42:311][427]LogModuleManager: Shutting down and abandoning module AndroidPlatformEditor (173)
+[2024.08.13-04.06.42:311][427]LogModuleManager: Shutting down and abandoning module IOSRuntimeSettings (172)
+[2024.08.13-04.06.42:311][427]LogModuleManager: Shutting down and abandoning module AndroidRuntimeSettings (171)
+[2024.08.13-04.06.42:311][427]LogModuleManager: Shutting down and abandoning module MergeActors (170)
+[2024.08.13-04.06.42:311][427]LogModuleManager: Shutting down and abandoning module SizeMap (169)
+[2024.08.13-04.06.42:311][427]LogModuleManager: Shutting down and abandoning module TreeMap (168)
+[2024.08.13-04.06.42:311][427]LogModuleManager: Shutting down and abandoning module ReferenceViewer (167)
+[2024.08.13-04.06.42:311][427]LogModuleManager: Shutting down and abandoning module LocalizationService (166)
+[2024.08.13-04.06.42:311][427]LogModuleManager: Shutting down and abandoning module LocalizationDashboard (165)
+[2024.08.13-04.06.42:311][427]LogModuleManager: Shutting down and abandoning module HardwareTargeting (164)
+[2024.08.13-04.06.42:311][427]LogModuleManager: Shutting down and abandoning module DeviceProfileEditor (163)
+[2024.08.13-04.06.42:311][427]LogModuleManager: Shutting down and abandoning module UndoHistory (162)
+[2024.08.13-04.06.42:311][427]LogModuleManager: Shutting down and abandoning module UserFeedback (161)
+[2024.08.13-04.06.42:311][427]LogModuleManager: Shutting down and abandoning module XmlParser (160)
+[2024.08.13-04.06.42:311][427]LogModuleManager: Shutting down and abandoning module Blutility (159)
+[2024.08.13-04.06.42:311][427]LogModuleManager: Shutting down and abandoning module ProjectTargetPlatformEditor (158)
+[2024.08.13-04.06.42:311][427]LogModuleManager: Shutting down and abandoning module ProjectSettingsViewer (157)
+[2024.08.13-04.06.42:312][427]LogModuleManager: Shutting down and abandoning module InputBindingEditor (156)
+[2024.08.13-04.06.42:312][427]LogModuleManager: Shutting down and abandoning module EditorSettingsViewer (155)
+[2024.08.13-04.06.42:312][427]LogModuleManager: Shutting down and abandoning module SettingsEditor (154)
+[2024.08.13-04.06.42:312][427]LogModuleManager: Shutting down and abandoning module ProjectLauncher (153)
+[2024.08.13-04.06.42:312][427]LogModuleManager: Shutting down and abandoning module SessionFrontend (152)
+[2024.08.13-04.06.42:312][427]LogModuleManager: Shutting down and abandoning module ProfilerClient (151)
+[2024.08.13-04.06.42:312][427]LogModuleManager: Shutting down and abandoning module TargetDeviceServices (150)
+[2024.08.13-04.06.42:312][427]LogModuleManager: Shutting down and abandoning module DeviceManager (149)
+[2024.08.13-04.06.42:344][427]LogModuleManager: Shutting down and abandoning module AutomationController (148)
+[2024.08.13-04.06.42:344][427]LogModuleManager: Shutting down and abandoning module AutomationWindow (147)
+[2024.08.13-04.06.42:344][427]LogModuleManager: Shutting down and abandoning module Layers (146)
+[2024.08.13-04.06.42:344][427]LogModuleManager: Shutting down and abandoning module ComponentVisualizers (145)
+[2024.08.13-04.06.42:344][427]LogModuleManager: Shutting down and abandoning module DetailCustomizations (144)
+[2024.08.13-04.06.42:344][427]LogModuleManager: Shutting down and abandoning module PackagesDialog (143)
+[2024.08.13-04.06.42:344][427]LogModuleManager: Shutting down and abandoning module Persona (142)
+[2024.08.13-04.06.42:344][427]LogModuleManager: Shutting down and abandoning module Kismet (141)
+[2024.08.13-04.06.42:344][427]LogModuleManager: Shutting down and abandoning module GraphEditor (140)
+[2024.08.13-04.06.42:344][427]LogModuleManager: Shutting down and abandoning module ClassViewer (139)
+[2024.08.13-04.06.42:344][427]LogModuleManager: Shutting down and abandoning module Toolbox (138)
+[2024.08.13-04.06.42:344][427]LogModuleManager: Shutting down and abandoning module ModuleUI (137)
+[2024.08.13-04.06.42:344][427]LogModuleManager: Shutting down and abandoning module MovieSceneTools (136)
+[2024.08.13-04.06.42:344][427]LogModuleManager: Shutting down and abandoning module OutputLog (135)
+[2024.08.13-04.06.42:344][427]LogModuleManager: Shutting down and abandoning module GammaUI (134)
+[2024.08.13-04.06.42:344][427]LogModuleManager: Shutting down and abandoning module Documentation (133)
+[2024.08.13-04.06.42:344][427]LogModuleManager: Shutting down and abandoning module StreamingPauseRendering (132)
+[2024.08.13-04.06.42:344][427]LogModuleManager: Shutting down and abandoning module AnalyticsET (131)
+[2024.08.13-04.06.42:344][427]LogModuleManager: Shutting down and abandoning module Analytics (130)
+[2024.08.13-04.06.42:344][427]LogModuleManager: Shutting down and abandoning module PortalServices (129)
+[2024.08.13-04.06.42:344][427]LogModuleManager: Shutting down and abandoning module PortalRpc (128)
+[2024.08.13-04.06.42:344][427]LogModuleManager: Shutting down and abandoning module MessagingRpc (127)
+[2024.08.13-04.06.42:344][427]LogModuleManager: Shutting down and abandoning module AITestSuite (126)
+[2024.08.13-04.06.42:344][427]LogModuleManager: Shutting down and abandoning module GameplayDebugger (125)
+[2024.08.13-04.06.42:344][427]LogModuleManager: Shutting down and abandoning module AIModule (124)
+[2024.08.13-04.06.42:344][427]LogModuleManager: Shutting down and abandoning module ProfilerService (123)
+[2024.08.13-04.06.42:463][427]LogModuleManager: Shutting down and abandoning module TaskGraph (122)
+[2024.08.13-04.06.42:463][427]LogModuleManager: Shutting down and abandoning module UnrealAutoMod (121)
+[2024.08.13-04.06.42:463][427]LogModuleManager: Shutting down and abandoning module SlateRemote (120)
+[2024.08.13-04.06.42:463][427]LogModuleManager: Shutting down and abandoning module SteamVRController (119)
+[2024.08.13-04.06.42:463][427]LogModuleManager: Shutting down and abandoning module SteamVR (118)
+[2024.08.13-04.06.42:463][427]LogModuleManager: Shutting down and abandoning module ProceduralMeshComponent (117)
+[2024.08.13-04.06.42:463][427]LogModuleManager: Shutting down and abandoning module OculusLibrary (116)
+[2024.08.13-04.06.42:463][427]LogModuleManager: Shutting down and abandoning module OculusInput (115)
+[2024.08.13-04.06.42:463][427]LogModuleManager: Shutting down and abandoning module CustomMeshComponent (114)
+[2024.08.13-04.06.42:463][427]LogModuleManager: Shutting down and abandoning module CableComponent (113)
+[2024.08.13-04.06.42:463][427]LogModuleManager: Shutting down and abandoning module ArchVisCharacter (112)
+[2024.08.13-04.06.42:463][427]LogModuleManager: Shutting down and abandoning module MediaPlayerEditor (111)
+[2024.08.13-04.06.42:463][427]LogModuleManager: Shutting down and abandoning module HTML5Networking (110)
+[2024.08.13-04.06.42:463][427]LogModuleManager: Shutting down and abandoning module SpeedTreeImporter (109)
+[2024.08.13-04.06.42:463][427]LogModuleManager: Shutting down and abandoning module PluginBrowser (108)
+[2024.08.13-04.06.42:464][427]LogModuleManager: Shutting down and abandoning module EpicSurvey (107)
+[2024.08.13-04.06.42:464][427]LogModuleManager: Shutting down and abandoning module DesktopPlatform (106)
+[2024.08.13-04.06.42:464][427]LogModuleManager: Shutting down and abandoning module VisualStudioSourceCodeAccess (105)
+[2024.08.13-04.06.42:464][427]LogModuleManager: Shutting down and abandoning module UObjectPlugin (104)
+[2024.08.13-04.06.42:464][427]LogModuleManager: Shutting down and abandoning module SubversionSourceControl (103)
+[2024.08.13-04.06.42:464][427]LogModuleManager: Shutting down and abandoning module PerforceSourceControl (102)
+[2024.08.13-04.06.42:464][427]LogModuleManager: Shutting down and abandoning module SourceControl (101)
+[2024.08.13-04.06.42:464][427]LogModuleManager: Shutting down and abandoning module GitSourceControl (100)
+[2024.08.13-04.06.42:464][427]LogModuleManager: Shutting down and abandoning module LightPropagationVolumeEditor (99)
+[2024.08.13-04.06.42:464][427]LogModuleManager: Shutting down and abandoning module PaperTiledImporter (98)
+[2024.08.13-04.06.42:464][427]LogModuleManager: Shutting down and abandoning module PaperSpriteSheetImporter (97)
+[2024.08.13-04.06.42:464][427]LogModuleManager: Shutting down and abandoning module MeshPaint (96)
+[2024.08.13-04.06.42:464][427]LogModuleManager: Shutting down and abandoning module HotReload (95)
+[2024.08.13-04.06.42:464][427]LogModuleManager: Shutting down and abandoning module MainFrame (94)
+[2024.08.13-04.06.42:464][427]LogModuleManager: Shutting down and abandoning module LevelEditor (93)
+[2024.08.13-04.06.42:465][427]LogModuleManager: Shutting down and abandoning module DirectoryWatcher (92)
+[2024.08.13-04.06.42:465][427]LogModuleManager: Shutting down and abandoning module AssetRegistry (91)
+[2024.08.13-04.06.42:519][427]LogModuleManager: Shutting down and abandoning module ContentBrowser (90)
+[2024.08.13-04.06.42:520][427]LogModuleManager: Shutting down and abandoning module Paper2DEditor (89)
+[2024.08.13-04.06.42:520][427]LogModuleManager: Shutting down and abandoning module UAM_Uproject (88)
+[2024.08.13-04.06.42:520][427]LogModuleManager: Shutting down and abandoning module UdpMessaging (87)
+[2024.08.13-04.06.42:621][427]LogModuleManager: Shutting down and abandoning module LightPropagationVolumeRuntime (86)
+[2024.08.13-04.06.42:621][427]LogModuleManager: Shutting down and abandoning module Paper2D (85)
+[2024.08.13-04.06.42:621][427]LogModuleManager: Shutting down and abandoning module WindowsMoviePlayer (84)
+[2024.08.13-04.06.42:621][427]LogModuleManager: Shutting down and abandoning module Media (83)
+[2024.08.13-04.06.42:621][427]LogModuleManager: Shutting down and abandoning module WmfMedia (82)
+[2024.08.13-04.06.42:622][427]LogModuleManager: Shutting down and abandoning module MediaAssets (81)
+[2024.08.13-04.06.42:622][427]LogModuleManager: Shutting down and abandoning module GameLiveStreaming (80)
+[2024.08.13-04.06.42:623][427]LogModuleManager: Shutting down and abandoning module GameplayTagsEditor (79)
+[2024.08.13-04.06.42:623][427]LogModuleManager: Shutting down and abandoning module OnlineBlueprintSupport (78)
+[2024.08.13-04.06.42:623][427]LogModuleManager: Shutting down and abandoning module GameplayTasksEditor (77)
+[2024.08.13-04.06.42:623][427]LogModuleManager: Shutting down and abandoning module PropertyEditor (76)
+[2024.08.13-04.06.42:623][427]LogModuleManager: Shutting down and abandoning module BehaviorTreeEditor (75)
+[2024.08.13-04.06.42:623][427]LogModuleManager: Shutting down and abandoning module FunctionalTesting (74)
+[2024.08.13-04.06.42:623][427]LogModuleManager: Shutting down and abandoning module CollisionAnalyzer (73)
+[2024.08.13-04.06.42:623][427]LogModuleManager: Shutting down and abandoning module WorkspaceMenuStructure (72)
+[2024.08.13-04.06.42:623][427]LogModuleManager: Shutting down and abandoning module MessageLog (71)
+[2024.08.13-04.06.42:623][427]LogModuleManager: Shutting down and abandoning module Sequencer (70)
+[2024.08.13-04.06.42:623][427]LogModuleManager: Shutting down and abandoning module AssetTools (69)
+[2024.08.13-04.06.42:623][427]LogModuleManager: Shutting down and abandoning module UMGEditor (68)
+[2024.08.13-04.06.42:623][427]LogModuleManager: Shutting down and abandoning module UMG (67)
+[2024.08.13-04.06.42:623][427]LogModuleManager: Shutting down and abandoning module SlateReflector (66)
+[2024.08.13-04.06.42:623][427]LogModuleManager: Shutting down and abandoning module Slate (65)
+[2024.08.13-04.06.42:623][427]LogModuleManager: Shutting down and abandoning module EditorStyle (64)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module SessionServices (63)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module SourceCodeAccess (62)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module HeadMountedDisplay (61)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module XAudio2 (60)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module Networking (58)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module Core (57)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module KismetCompiler (56)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module PhysXFormats (55)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module MeshUtilities (54)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module CookingStats (53)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module DerivedDataCache (52)
+[2024.08.13-04.06.42:625][427]LogDerivedDataCache: Shutdown
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module MetalShaderFormat (51)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module ShaderFormatD3D (50)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module ShaderFormatOpenGL (49)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module TextureFormatUncompressed (48)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module ImageWrapper (47)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module TextureFormatASTC (46)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module TextureFormatPVR (45)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module TextureFormatDXT (44)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module TextureFormatIntelISPCTexComp (43)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module AudioFormatOpus (42)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module AudioFormatOgg (41)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module AudioFormatADPCM (40)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module TVOSTargetPlatform (39)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module Messaging (38)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module IOSTargetPlatform (37)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module HTML5TargetPlatform (36)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module Android_MultiTargetPlatform (35)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module Android_ASTCTargetPlatform (34)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module Android_ETC2TargetPlatform (33)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module Android_ETC1TargetPlatform (32)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module Android_DXTTargetPlatform (31)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module Android_ATCTargetPlatform (30)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module Android_PVRTCTargetPlatform (29)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module AndroidTargetPlatform (28)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module AllDesktopTargetPlatform (27)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module WindowsClientTargetPlatform (26)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module WindowsServerTargetPlatform (25)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module WindowsNoEditorTargetPlatform (24)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module WindowsTargetPlatform (23)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module TargetPlatform (22)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module InputCore (21)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module Settings (20)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module OnlineSubsystem (18)
+[2024.08.13-04.06.42:625][427]LogModuleManager: Shutting down and abandoning module HTTP (17)
+[2024.08.13-04.06.43:628][427]LogModuleManager: Shutting down and abandoning module OculusRift (16)
+[2024.08.13-04.06.43:628][427]LogModuleManager: Shutting down and abandoning module ExampleDeviceProfileSelector (15)
+[2024.08.13-04.06.43:628][427]LogModuleManager: Shutting down and abandoning module TextureCompressor (14)
+[2024.08.13-04.06.43:628][427]LogModuleManager: Shutting down and abandoning module ShaderCore (13)
+[2024.08.13-04.06.43:628][427]LogModuleManager: Shutting down and abandoning module Landscape (12)
+[2024.08.13-04.06.43:628][427]LogModuleManager: Shutting down and abandoning module SlateRHIRenderer (11)
+[2024.08.13-04.06.43:633][427]LogModuleManager: Shutting down and abandoning module OpenGLDrv (10)
+[2024.08.13-04.06.43:633][427]LogModuleManager: Shutting down and abandoning module D3D11RHI (9)
+[2024.08.13-04.06.43:633][427]LogModuleManager: Shutting down and abandoning module AnimGraphRuntime (8)
+[2024.08.13-04.06.43:633][427]LogModuleManager: Shutting down and abandoning module Renderer (7)
+[2024.08.13-04.06.43:633][427]LogModuleManager: Shutting down and abandoning module Engine (6)
+[2024.08.13-04.06.43:633][427]LogModuleManager: Shutting down and abandoning module CoreUObject (5)
+[2024.08.13-04.06.43:633][427]LogModuleManager: Shutting down and abandoning module NetworkFile (4)
+[2024.08.13-04.06.43:633][427]LogModuleManager: Shutting down and abandoning module StreamingFile (3)
+[2024.08.13-04.06.43:633][427]LogModuleManager: Shutting down and abandoning module SandboxFile (2)
+[2024.08.13-04.06.43:633][427]LogModuleManager: Shutting down and abandoning module PakFile (1)
+[2024.08.13-04.06.43:635][427]LogExit: Exiting.
+[2024.08.13-04.06.43:636][427]Log file closed, 08/13/24 00:06:43

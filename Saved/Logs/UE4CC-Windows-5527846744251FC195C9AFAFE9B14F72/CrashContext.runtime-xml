@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FGenericCrashContext>
+<RuntimeProperties>
+<CrashVersion>3</CrashVersion>
+<CrashGUID>UE4CC-Windows-5527846744251FC195C9AFAFE9B14F72</CrashGUID>
+<ProcessId>35788</ProcessId>
+<IsInternalBuild>0</IsInternalBuild>
+<IsPerforceBuild>0</IsPerforceBuild>
+<IsSourceDistribution>1</IsSourceDistribution>
+<SecondsSinceStart>122</SecondsSinceStart>
+<GameName>UE4-UAM_Uproject</GameName>
+<ExecutableName>UE4Editor</ExecutableName>
+<BuildConfiguration>Development</BuildConfiguration>
+<PlatformName>Windows</PlatformName>
+<PlatformNameIni>Windows</PlatformNameIni>
+<EngineMode>Editor</EngineMode>
+<EngineVersion>4.11.2-0+UE4</EngineVersion>
+<CommandLine>&quot;C:\Users\Mythical\Documents\GitHub\UnrealAutoModInEditor\UAM_Uproject.uproject&quot; </CommandLine>
+<LanguageLCID>1033</LanguageLCID>
+<AppDefaultLocale>en_US</AppDefaultLocale>
+<IsUE4Release>0</IsUE4Release>
+<UserName></UserName>
+<BaseDir>D:/unreal_engine_installs/UE_4.11_source_build/Engine/Binaries/Win64/</BaseDir>
+<RootDir>D:/unreal_engine_installs/UE_4.11_source_build/</RootDir>
+<MachineId>0B4C9F524A976D01F6F575A1D7049B0D</MachineId>
+<EpicAccountId>f3c38f8e2bce4436afd43e5e0b2d34d9</EpicAccountId>
+<CallStack></CallStack>
+<SourceContext></SourceContext>
+<UserDescription></UserDescription>
+<ErrorMessage></ErrorMessage>
+<CrashDumpMode>0</CrashDumpMode>
+<Misc.NumberOfCores>8</Misc.NumberOfCores>
+<Misc.NumberOfCoresIncludingHyperthreads>16</Misc.NumberOfCoresIncludingHyperthreads>
+<Misc.Is64bitOperatingSystem>1</Misc.Is64bitOperatingSystem>
+<Misc.CPUVendor>GenuineIntel</Misc.CPUVendor>
+<Misc.CPUBrand>11th Gen Intel(R) Core(TM) i7-11800H @ 2.30GHz</Misc.CPUBrand>
+<Misc.PrimaryGPUBrand>Intel(R) UHD Graphics</Misc.PrimaryGPUBrand>
+<Misc.OSVersionMajor>Windows 10</Misc.OSVersionMajor>
+<Misc.OSVersionMinor></Misc.OSVersionMinor>
+<MemoryStats.TotalPhysical>16866865152</MemoryStats.TotalPhysical>
+<MemoryStats.TotalVirtual>140737488224256</MemoryStats.TotalVirtual>
+<MemoryStats.PageSize>65536</MemoryStats.PageSize>
+<MemoryStats.TotalPhysicalGB>16</MemoryStats.TotalPhysicalGB>
+<MemoryStats.AvailablePhysical>0</MemoryStats.AvailablePhysical>
+<MemoryStats.AvailableVirtual>0</MemoryStats.AvailableVirtual>
+<MemoryStats.UsedPhysical>0</MemoryStats.UsedPhysical>
+<MemoryStats.PeakUsedPhysical>0</MemoryStats.PeakUsedPhysical>
+<MemoryStats.UsedVirtual>0</MemoryStats.UsedVirtual>
+<MemoryStats.PeakUsedVirtual>0</MemoryStats.PeakUsedVirtual>
+<MemoryStats.bIsOOM>0</MemoryStats.bIsOOM>
+<MemoryStats.OOMAllocationSize>0</MemoryStats.OOMAllocationSize>
+<MemoryStats.OOMAllocationAlignment>0</MemoryStats.OOMAllocationAlignment>
+</RuntimeProperties>
+<PlatformProperties>
+<PlatformIsRunningWindows>1</PlatformIsRunningWindows>
+</PlatformProperties>
+</FGenericCrashContext>
