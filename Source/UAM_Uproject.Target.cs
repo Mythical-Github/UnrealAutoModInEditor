@@ -5,21 +5,10 @@ using System.Collections.Generic;
 
 public class UAM_UprojectTarget : TargetRules
 {
-	public UAM_UprojectTarget(TargetInfo Target)
+	public UAM_UprojectTarget(TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Game;
-	}
 
-	//
-	// TargetRules interface.
-	//
-
-	public override void SetupBinaries(
-		TargetInfo Target,
-		ref List<UEBuildBinaryConfiguration> OutBuildBinaryConfigurations,
-		ref List<string> OutExtraModuleNames
-		)
-	{
-		OutExtraModuleNames.AddRange( new string[] { "UAM_Uproject" } );
+		ExtraModuleNames.AddRange( new string[] { "UAM_Uproject" } );
 	}
 }

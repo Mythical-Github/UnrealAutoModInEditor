@@ -1,16 +1,19 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "{0CB87D1D-4AA0-01B3-0873-EAA4E626CE63}",
+	"EngineAssociation": "4.22",
 	"Category": "",
 	"Description": "",
 	"Modules": [
 		{
 			"Name": "UAM_Uproject",
 			"Type": "Runtime",
-			"LoadingPhase": "Default",
-			"AdditionalDependencies": [
-				"UMG"
-			]
+			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "UnrealAutoMod",
+			"Enabled": true
 		}
 	]
 }
