@@ -10,9 +10,8 @@
 	"DocsURL": "",
 	"MarketplaceURL": "",
 	"SupportURL": "",
-	"EnabledByDefault": true,
+	"EngineVersion": "4.22.0",
 	"CanContainContent": true,
-	"IsBetaVersion": false,
 	"Installed": true,
 	"Modules": [
 		{
