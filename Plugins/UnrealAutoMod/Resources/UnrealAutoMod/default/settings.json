@@ -94,6 +94,10 @@
       "function_enum": "rerun_unreal_auto_mod"
     }
   ],
+  "optionals": {
+    "blender_path": "C:/Program Files/Blender Foundation/Blender 3.5/blender-launcher.exe",
+	"ide_path": "C:/Users/Mythical/AppData/Local/Programs/Microsoft VS Code/Code.exe"
+  },
   "mod_pak_info": [
     {
       "mod_name": "ModLoader_P",
