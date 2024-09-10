@@ -1,6 +1,6 @@
 #include "UnrealAutoModUtilities.h"
-#include "PlatformProcess.h"
-#include "Paths.h"
+#include "HAL/PlatformProcess.h"
+#include "Misc/Paths.h"
 #include "HAL/FileManager.h"
 #include "Engine/Engine.h"
 #include "UObject/Class.h"
