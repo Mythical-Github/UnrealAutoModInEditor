@@ -14,6 +14,9 @@ public:
     UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
 		static void LaunchExternalExecutable(const FString& FilePath, const TArray<FString>& Parameters);
 
+	UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
+		static void LaunchExternalExecutableNoHead(const FString& FilePath, const TArray<FString>& Parameters);
+
     UFUNCTION(BlueprintCallable, Category = "UnrealAutoMod")
 		static FString GetProjectDirectory();
 

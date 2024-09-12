@@ -28,6 +28,63 @@ void UUnrealAutoModUtilities::LaunchExternalExecutable(const FString& FilePath, 
     }
 }
 
+#if PLATFORM_WINDOWS
+#include "Windows/AllowWindowsPlatformTypes.h"
+#include "Windows/PreWindowsApi.h"
+#include <windows.h>
+#include "Windows/PostWindowsApi.h"
+#include "Windows/HideWindowsPlatformTypes.h"
+#endif
+
+void UUnrealAutoModUtilities::LaunchExternalExecutableNoHead(const FString& FilePath, const TArray<FString>& Parameters)
+{
+    FString Command = FString::Printf(TEXT("\"%s\""), *FilePath);
+
+    for (const FString& Param : Parameters)
+    {
+        Command += FString::Printf(TEXT(" %s"), *Param);
+    }
+
+#if PLATFORM_WINDOWS
+    // Set up STARTUPINFO to hide the window for cmd.exe
+    STARTUPINFO StartupInfo;
+    PROCESS_INFORMATION ProcessInfo;
+
+    ZeroMemory(&StartupInfo, sizeof(StartupInfo));
+    ZeroMemory(&ProcessInfo, sizeof(ProcessInfo));
+
+    StartupInfo.cb = sizeof(StartupInfo);
+    StartupInfo.dwFlags |= STARTF_USESHOWWINDOW;
+    StartupInfo.wShowWindow = SW_HIDE; // Hide the cmd.exe window
+
+    // Create the full command to run via cmd.exe
+    FString FullCommand = FString::Printf(TEXT("cmd.exe /C START /B \"%s\" %s"), *FilePath, *Command);
+    TCHAR* CommandLine = FullCommand.GetCharArray().GetData();
+
+    // Create process without window (CREATE_NO_WINDOW)
+    if (CreateProcess(nullptr, CommandLine, nullptr, nullptr, false, CREATE_NO_WINDOW, nullptr, nullptr, &StartupInfo, &ProcessInfo))
+    {
+        UE_LOG(LogTemp, Log, TEXT("Successfully launched executable headlessly: %s"), *FilePath);
+        CloseHandle(ProcessInfo.hProcess);
+        CloseHandle(ProcessInfo.hThread);
+    }
+    else
+    {
+        UE_LOG(LogTemp, Error, TEXT("Failed to launch executable headlessly: %s"), *FilePath);
+    }
+
+#else
+    // For non-Windows platforms, fallback to FPlatformProcess (doesn't guarantee no window)
+    FProcHandle ProcessHandle = FPlatformProcess::CreateProc(*FilePath, *Command, true, false, false, nullptr, 0, nullptr, nullptr);
+
+    if (!ProcessHandle.IsValid())
+    {
+        UE_LOG(LogTemp, Error, TEXT("Failed to launch executable headlessly: %s"), *FilePath);
+}
+#endif
+}
+
+
 FString UUnrealAutoModUtilities::GetProjectDirectory()
 {
     FString ProjectFilePath = FPaths::ConvertRelativePathToFull(FPaths::GetProjectFilePath());
