@@ -164,20 +164,31 @@ bool UUnrealAutoModUtilities::CreateTextFile(const FString& FileName, const FStr
     return FFileHelper::SaveStringToFile(FileContents, *FileName);
 }
 
+#include "UnrealAutoModUtilities.h"
+#include <fstream>
+#include <sstream>
+#include "Misc/MessageDialog.h"
+
 FString UUnrealAutoModUtilities::ReadFile(const FString& FileName)
 {
-    FString FileContents;
-    // Read the file contents into the FString
-    if (FFileHelper::LoadFileToString(FileContents, *FileName))
-    {
-        return FileContents;
-    }
-    else
-    {
-        UE_LOG(LogTemp, Warning, TEXT("Failed to read file: %s"), *FileName);
-        return FString();
-    }
+	std::ifstream FileStream(TCHAR_TO_UTF8(*FileName), std::ios::in | std::ios::binary);
+
+	if (!FileStream.is_open())
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Failed to open file: %s"), *FileName);
+		return FString();
+	}
+
+	std::stringstream Buffer;
+	Buffer << FileStream.rdbuf();
+
+	FileStream.close();
+
+	// Convert the read content to FString
+	std::string Content = Buffer.str();
+	return FString(Content.c_str());
 }
+
 
 TArray<FString> UUnrealAutoModUtilities::GetFunctionNames(UObject* Object)
 {
