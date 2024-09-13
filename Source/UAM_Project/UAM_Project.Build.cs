@@ -2,13 +2,13 @@
 
 using UnrealBuildTool;
 
-public class UAM_Uproject : ModuleRules
+public class UAM_Project : ModuleRules
 {
-	public UAM_Uproject(ReadOnlyTargetRules Target) : base(Target)
+	public UAM_Project(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 	
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "UnrealAutoMod" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore" });
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });
 
