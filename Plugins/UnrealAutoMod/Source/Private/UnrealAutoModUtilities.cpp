@@ -323,22 +323,26 @@ TArray<UObject*> UUnrealAutoModUtilities::GetAllInstancedObjectsOfClass(UClass* 
 
 TArray<FString> UUnrealAutoModUtilities::GetEnumValuesAsString(UEnum* Enum)
 {
-    TArray<FString> EnumValues;
+	TArray<FString> EnumValues;
 
-    if (!Enum)
-    {
-        return EnumValues;
-    }
+	if (!Enum)
+	{
+		return EnumValues;
+	}
 
-    for (int32 i = 0; i < Enum->NumEnums(); ++i)
-    {
-        if (!Enum->HasMetaData(TEXT("Hidden"), i))
-        {
-            EnumValues.Add(Enum->GetDisplayNameText(i).ToString());
-        }
-    }
+	for (int32 i = 0; i < Enum->NumEnums(); ++i)
+	{
+		if (!Enum->HasMetaData(TEXT("Hidden"), i))
+		{
+#if ENGINE_MAJOR_VERSION >= 5  // For Unreal Engine 5 and above
+            EnumValues.Add(Enum->GetDisplayNameTextByIndex(i).ToString());
+#else  // For Unreal Engine 4.x and below
+            EnumValues.Add(Enum->GetNameByIndex(i).ToString());
+#endif
+		}
+	}
 
-    return EnumValues;
+	return EnumValues;
 }
 
 void UUnrealAutoModUtilities::OpenDirectory(FString DirectoryPath)
