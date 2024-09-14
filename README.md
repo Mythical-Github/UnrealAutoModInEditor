@@ -23,7 +23,6 @@ Once everything is set up, you can proceed to the .
 * Supports all [features](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/README.md#features) of UnrealAutoMod
 * Various Utility Buttons
 * Automatic Installation of common modding tools
-* Automatic engine cooking, and packaging
 * Preset Selector/Creator
 * In Editor Log
 * Theme Support
