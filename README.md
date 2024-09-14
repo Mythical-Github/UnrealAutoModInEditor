@@ -4,6 +4,9 @@ Easy To Use GUI Utility For Unreal Engine Games 4.22 and onwards <br>
 Automates creation, and placement, of mod archives, and other various actions. <br>
 An in editor front-end for [UnrealAutoMod](https://github.com/Mythical-Github/UnrealAutoMod)
 
+Once everything is set up, you can proceed to the .
+
+
 <h2>Project Example:</h2>
 
 <h3>UE4 Example:</h3>
@@ -17,7 +20,7 @@ An in editor front-end for [UnrealAutoMod](https://github.com/Mythical-Github/Un
 <h2>💪 Features</h2>
 
 * Supports Unreal Engine versions: 4.22 and onwards
-* Supports all features of UnrealAutoMod (back link here later)
+* Supports all [features](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/README.md#features) of UnrealAutoMod
 * Various Utility Buttons
 * Automatic Installation of common modding tools
 * Automatic engine cooking, and packaging
@@ -27,22 +30,34 @@ An in editor front-end for [UnrealAutoMod](https://github.com/Mythical-Github/Un
 
 <h2>🛠️ Installation Steps:</h2>
 
-1. Download and unzip the latest [release](https://github.com/Mythical-Github/UnrealAutoMod/releases/latest).\
-You can keep the program anywhere you'd like.
+1. Download and unzip the latest [release](https://github.com/Mythical-Github/UnrealAutoModInEditor/releases/latest) for your engine version.
 
-unzup and place the Plugins folder into the uproject directory, next to the uproject file
+2. Unzip and place the Plugins folder into your uproject directory.
 
-open uproject, compile if it asks
+3. Open uproject, and build if it asks.
 
-enable seeing plugin content, open browser on left, select unreal auto mod content go into widgets right click on it place it on the right side, or wherever you prefer
+4. Navigate to the UnrealAutoModMini widget in the content browser, then right click and run, then place wherever you'd prefer.
 
-customize color theme if desired
+5. You can customize the color of the theme, by editing the DT_Themes, then recompiling the UnrealAutoModMini widget.
 
-save into layout
+6. At the top of the unreal browser, hover over window, then at the bottom you can save the layout.
 
-copy over old jsons if exist
+7. Setup your default json file, using the following [instructions](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/README.md#installation_steps).\
+If you have json files, from an install of UnrealAutoMod feel free to use those.
 
-create new json setup 
+<h3>Video Examples:</h3>
+
+<h4>Install From Zip Example:</h4>
+
+https://github.com/user-attachments/assets/4b2e6159-5637-4538-b618-995a3b5bca78
+
+<h4>Setting Up Theme Example:</h4>
+
+https://github.com/user-attachments/assets/058d4978-3d70-4ada-bd2b-a812b8505526
+
+<h4>Setting Up In Editor Example:</h4>
+
+https://github.com/user-attachments/assets/ada38347-c3fe-413a-962d-54a208b54825
 
 <h2>💻 Built with</h2>
 
