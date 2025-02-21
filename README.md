@@ -2,7 +2,7 @@
 
 Easy To Use GUI Utility For Unreal Engine Games 4.22 and onwards <br>
 Automates creation, and placement, of mod archives, and other various actions. <br>
-An in editor front-end for [UnrealAutoMod](https://github.com/Mythical-Github/UnrealAutoMod)
+An in editor front-end for [UnrealAutoMod](https://github.com/Mythical-Github/unreal_auto_mod)
 
 <h2>Project Example:</h2>
 
