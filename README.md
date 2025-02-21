@@ -17,7 +17,7 @@ An in editor front-end for [UnrealAutoMod](https://github.com/Mythical-Github/un
 <h2>💪 Features</h2>
 
 * Supports Unreal Engine versions: 4.22 and onwards
-* Supports all [features](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/README.md#features) of UnrealAutoMod
+* Supports all [features](https://github.com/Mythical-Github/unreal_auto_mod/blob/main/README.md#features) of UnrealAutoMod
 * Various Utility Buttons
 * Automatic Installation of common modding tools
 * Preset Selector/Creator
@@ -38,7 +38,7 @@ An in editor front-end for [UnrealAutoMod](https://github.com/Mythical-Github/un
 
 6. At the top of the unreal browser, hover over window, then at the bottom you can save the layout.
 
-7. Setup your default json file, using the following [instructions](https://github.com/Mythical-Github/UnrealAutoMod/blob/main/README.md#installation_steps).\
+7. Setup your default json file, using the following [instructions](https://github.com/Mythical-Github/unreal_auto_mod/blob/main/README.md#installation_steps).\
 If you have json files, from an install of UnrealAutoMod feel free to use those.
 
 <h3>Video Examples:</h3>
